@@ -1,4 +1,4 @@
-package com.projecto.project.Catalog.Domain.Entities;
+package com.projecto.project.Survey.Domain.Entities;
 
 import java.time.LocalDateTime;
 
@@ -7,17 +7,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categories_catalog")
-public class Catalog {
+@Table(name = "surveys")
+public class Survey {
 
     @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Column(name = "created_at" , columnDefinition = "timestamp")
     private LocalDateTime createdAt;
@@ -25,27 +23,20 @@ public class Catalog {
     @Column(name = "updated_at" , columnDefinition = "timestamp")
     private LocalDateTime updatedAt;
 
-    @Column(columnDefinition = "varchar(255)")
+    @Column(name = "name" , columnDefinition = "varchar(255)")
     private String name;
-    
-    @PrePersist
-    public void prePersistAudit() {
-        createdAt = LocalDateTime.now();
+
+    @Column(name = "description" , columnDefinition = "varchar(255)") 
+    private String description;
+
+    public Survey() {
     }
 
-    @PreUpdate
-    public void preUpdateAudit() {
-        updatedAt = LocalDateTime.now();
-    }
-
-    public Catalog() {
-    }
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -73,6 +64,15 @@ public class Catalog {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     
+
 
 }
