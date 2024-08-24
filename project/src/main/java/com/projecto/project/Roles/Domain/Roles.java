@@ -25,6 +25,7 @@ public class Roles {
     @Column(nullable = false)
     private String name;
 
+    // Esta es la creación de la relación muchos a muchos. Debe ir en las 2 tablas (Users, Roles)
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "role_id"),
     inverseJoinColumns = @JoinColumn(name = "user_id"))
