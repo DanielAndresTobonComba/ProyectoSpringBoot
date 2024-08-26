@@ -6,4 +6,6 @@ import com.projecto.project.Roles.Domain.Roles;
 
 public interface RolesRepository extends  JpaRepository<Roles, Long> {
 
+    
+
 }

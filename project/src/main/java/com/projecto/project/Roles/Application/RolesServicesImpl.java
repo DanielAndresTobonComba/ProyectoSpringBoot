@@ -10,6 +10,6 @@ import com.projecto.project.Roles.Infrastructure.RolesRepository;
 public class RolesServicesImpl implements IRoles {
 
     @Autowired
-    RolesRepository repository;
+    RolesRepository rolesRepository;
 
 }
