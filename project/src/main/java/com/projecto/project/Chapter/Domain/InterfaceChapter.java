@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 
 
-public interface IChapter {
+public interface InterfaceChapter {
 
     Optional <Chapter> findById(Long id); 
     Page<Chapter> findAll(Pageable pageable);
