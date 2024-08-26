@@ -1,9 +1,8 @@
-package com.projecto.project.Chapter.Infrastructure;
+package com.projecto.project.Roles.Infrastructure;
 
 import org.springframework.web.bind.annotation.RestController;
 
-
-
+@RestController
 public class ChapterController {
 
 }

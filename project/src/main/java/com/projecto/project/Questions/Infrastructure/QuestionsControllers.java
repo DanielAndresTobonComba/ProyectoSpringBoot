@@ -12,10 +12,11 @@ import com.projecto.project.Questions.Domain.Questions;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RestController("/")
-@Controller
+@RequestMapping()
 public class QuestionsControllers {
 
     @Autowired

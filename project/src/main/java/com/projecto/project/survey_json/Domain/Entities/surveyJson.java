@@ -2,9 +2,11 @@ package com.projecto.project.survey_json.Domain.Entities;
 
 import java.time.LocalDateTime;
 
+import com.projecto.project.Embeddable.CreatedUpdatedTime;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,11 +25,7 @@ public class surveyJson {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "created_at" , columnDefinition = "timestamp")
-    private LocalDateTime createdAt;
 
-    @Column(name = "updated_at" , columnDefinition = "timestamp")
-    private LocalDateTime updatedAt;
 
     @Column(name = "payload" , columnDefinition = "jsonb")
     private String json;
@@ -36,15 +34,8 @@ public class surveyJson {
     @JoinColumn(name = "survey_id")
     private Survey survey; 
 
-    @PrePersist
-    public void prePersistAudit() {
-        createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void preUpdateAudit() {
-        updatedAt = LocalDateTime.now();
-    }
+    @Embedded 
+    private CreatedUpdatedTime createdUpdatedTime;
 
     public surveyJson() {
     }
@@ -57,21 +48,6 @@ public class surveyJson {
         this.id = id;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 
     public String getJson() {
         return json;

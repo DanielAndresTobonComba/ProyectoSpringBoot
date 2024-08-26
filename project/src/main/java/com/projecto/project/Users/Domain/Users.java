@@ -32,7 +32,7 @@ public class Users {
     @Column(columnDefinition = "varchar(255)", nullable = false)
     private String password;
 
-    // Esta es la creación de la relación muchos a muchos. Debe ir en las 2 tablas (Users, Roles)
+    // Esta es la creación de la relación muchos a muchos. Debe ir en las 2 tablas (Users, Roles) si no tiene atributos propios
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
