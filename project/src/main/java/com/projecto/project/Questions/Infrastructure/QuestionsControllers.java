@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RestController("/")
-@RequestMapping()
+@RestController()
+@RequestMapping("/")
 public class QuestionsControllers {
 
     @Autowired
