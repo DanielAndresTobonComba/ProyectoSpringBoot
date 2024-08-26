@@ -1,8 +1,11 @@
-package com.projecto.project.Catalog.Domain.Entities;
+package com.projecto.project.Catalog.Domain;
 
 import java.time.LocalDateTime;
 
+import com.projecto.project.Embeddable.CreatedUpdatedTime;
+
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,24 +22,11 @@ public class Catalog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "created_at" , columnDefinition = "timestamp")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at" , columnDefinition = "timestamp")
-    private LocalDateTime updatedAt;
-
     @Column(columnDefinition = "varchar(255)")
     private String name;
     
-    @PrePersist
-    public void prePersistAudit() {
-        createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void preUpdateAudit() {
-        updatedAt = LocalDateTime.now();
-    }
+    @Embedded 
+    private CreatedUpdatedTime createdUpdatedTime;
 
     public Catalog() {
     }
@@ -47,22 +37,6 @@ public class Catalog {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getName() {

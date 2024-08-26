@@ -21,10 +21,10 @@ public class CreatedUpdatedTime {
     /* Esta clase es un embebible de la fecha-hora de creación y actualización de un registro en cualquier entidad
     que llegase a tener estos dos campos.*/
 
-    @Column(nullable = false) 
+    @Column(nullable = true) 
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime updatedAt;
 
      @PrePersist
