@@ -1,11 +1,10 @@
 package com.projecto.project.Response_Question.Domain;
 
-import com.projecto.project.Embeddable.CreatedUpdatedTime;
+
 import com.projecto.project.Response_Options.Domain.ResponseOptions;
 import com.projecto.project.Subresponse_Options.Domain.SubresponseOptions;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
