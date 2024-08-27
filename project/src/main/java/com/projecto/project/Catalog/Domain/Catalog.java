@@ -1,6 +1,6 @@
 package com.projecto.project.Catalog.Domain;
 
-import java.time.LocalDateTime;
+
 
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 
@@ -10,8 +10,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
