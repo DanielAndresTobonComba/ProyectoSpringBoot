@@ -15,14 +15,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-@RestController()
-@RequestMapping("/")
+
+@RestController
+@RequestMapping("question/")
+
 public class QuestionsControllers {
 
     @Autowired
     IQuestions iQuestions;
 
-    @GetMapping("question/{id}")
+    @GetMapping("{id}/")
     
     public ResponseEntity<Questions> findById(@PathVariable long id) {
 
