@@ -1,4 +1,4 @@
-package com.projecto.project.Catalog.Infraestructure.Repository;
+package com.projecto.project.Catalog.Infraestructure;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
