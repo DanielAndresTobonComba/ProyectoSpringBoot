@@ -1,6 +1,6 @@
 package com.projecto.project.Survey.Domain.Entities;
 
-import java.time.LocalDateTime;
+
 
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 
@@ -11,6 +11,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
+
+
+
 
 @Entity
 @Table(name = "surveys")
@@ -20,10 +26,13 @@ public class Survey {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
 
-
+    @NotEmpty
+    @NotBlank
     @Column(name = "name" , columnDefinition = "varchar(255)" , nullable = true)
     private String name;
 
+        @NotEmpty
+    @NotBlank
     @Column(name = "description" , columnDefinition = "varchar(255) " , nullable = true) 
     private String description;
 

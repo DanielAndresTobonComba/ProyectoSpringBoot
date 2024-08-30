@@ -1,14 +1,29 @@
 package com.projecto.project.Survey.Infraestructure.Controller;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import com.projecto.project.Survey.Domain.Service.ISurvey;
+
+import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -30,8 +45,41 @@ public class SurveyController {
     public Page<Survey> findAll(Pageable pageable) {
         return servicio.findAll(pageable);
     }
+
+    // http://localhost:8090/survey/findOne/1
+
+    @GetMapping("/findOne/{id}")
+    public Optional<Survey> findOne(@PathVariable long id) {
+
+        return servicio.findBy(id);
+    }
     
 
+/* 
+    @DeleteMapping("/deleteOne/{id}")
+    public ResponseEntity<?> deleteOne(@PathVariable Long id) {
+
+        Optional<Survey> surveyOptional = servicio.delete(id);
+        if (surveyOptional.isPresent()) {
+            return ResponseEntity.ok(surveyOptional.orElseThrow());
+        }
+        return ResponseEntity.notFound().build();
+    } */
+
+    
+    // http://localhost:8090/survey/deleteOne/2
+
+    @DeleteMapping("/deleteOne/{id}")
+    public String deleteOne(@PathVariable Long id) {
+
+        Optional<Survey> surveyOptional = servicio.delete(id);
+        
+        if (surveyOptional.isPresent()) {
+
+            return "Encuesta numero : " + id + " ha sido eliminada";
+        }
+        return "Encuesta numero : " + id + " no existe ";
+    } 
 
 
     
