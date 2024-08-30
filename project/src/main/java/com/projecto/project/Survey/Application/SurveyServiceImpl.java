@@ -5,11 +5,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import com.projecto.project.Survey.Domain.Service.ISurvey;
 import com.projecto.project.Survey.Infraestructure.Repository.SurveyRepository;
 
+@Service
 public class SurveyServiceImpl implements ISurvey {
 
     @Autowired 

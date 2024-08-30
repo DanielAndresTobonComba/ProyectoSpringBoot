@@ -15,7 +15,7 @@ import com.projecto.project.Chapter.Infrastructure.ChapterRepository;
 
 
 @Service
-public class ChapterServicesImpl implements InterfaceChapter{
+public class ChapterServicesImpl implements IChapter{
 
     @Autowired
     ChapterRepository chapterRepository;

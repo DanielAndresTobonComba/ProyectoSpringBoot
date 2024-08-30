@@ -21,10 +21,10 @@ public class Survey {
     private long id;
 
 
-    @Column(name = "name" , columnDefinition = "varchar(255)")
+    @Column(name = "name" , columnDefinition = "varchar(255)" , nullable = true)
     private String name;
 
-    @Column(name = "description" , columnDefinition = "varchar(255)") 
+    @Column(name = "description" , columnDefinition = "varchar(255) " , nullable = true) 
     private String description;
 
         
