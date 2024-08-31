@@ -1,18 +1,16 @@
 package com.projecto.project.Roles.Domain;
 
-import java.util.Set;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.projecto.project.Users.Domain.Users;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity
@@ -22,14 +20,13 @@ public class Roles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     // Esta es la creación de la relación muchos a muchos. Debe ir en las 2 tablas (Users, Roles)
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "role_id"),
-    inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<Users> users;
+    @JsonIgnoreProperties({"roles", "handler", "hibernateLazyInitializer"})
+    @ManyToMany(mappedBy = "roles")
+    private List<Users> users;
 
     public Roles() {}
 
@@ -54,11 +51,11 @@ public class Roles {
         this.name = name;
     }
 
-    public Set<Users> getUser() {
+    public List<Users> getUser() {
         return users;
     }
 
-    public void setUser(Set<Users> users) {
+    public void setUser(List<Users> users) {
         this.users = users;
     }
 
