@@ -1,11 +1,10 @@
 package com.projecto.project.Users.Application;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -43,14 +42,35 @@ public class UsersServiceImpl implements IUsers {
         }
 
         user.setRoles(roles);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(new Sha256Hash(user.getPassword(), "f1nd1ngn3m0", 1024).toBase64());
         return usersRepository.save(user);
     }
+
+    
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Users> findByUsername(String username) {
+        
+        return usersRepository.findByUsername(username);
+    }
+
 
     @Override
     @Transactional(readOnly = true)
     public List<Users> findAll() {
         return (List<Users>) usersRepository.findAll();
     }
+
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Users> findById(long id) {
+        
+        return usersRepository.findById(id);
+    }
+
+    
 
 }

@@ -30,7 +30,7 @@ public class Users {
     @Column(columnDefinition = "bool", nullable = false)
     private boolean enabled;
 
-    @Column(columnDefinition = "varchar(12)", nullable = false)
+    @Column(columnDefinition = "varchar(12)", nullable = false, unique = true)
     private String username;
 
     @Column(columnDefinition = "varchar(255)", nullable = false)
