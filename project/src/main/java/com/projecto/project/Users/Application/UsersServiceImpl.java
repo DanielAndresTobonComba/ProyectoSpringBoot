@@ -25,8 +25,7 @@ public class UsersServiceImpl implements IUsers {
     @Autowired
     RolesRepository roleRepository;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    
 
     @Override
     @Transactional

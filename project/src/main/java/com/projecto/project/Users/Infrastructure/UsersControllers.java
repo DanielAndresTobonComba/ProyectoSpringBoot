@@ -1,15 +1,11 @@
 package com.projecto.project.Users.Infrastructure;
 
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,8 +27,8 @@ public class UsersControllers {
     @Autowired
     IUsers usersServices;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    // @Autowired
+    // PasswordEncoder passwordEncoder;
 
     
 
@@ -49,24 +45,29 @@ public class UsersControllers {
 
    
 
-    // @PostMapping
-    // public ResponseEntity<?> createUser(@Valid @RequestBody Users users, BindingResult result) {
+    @PostMapping ("/login")
+    public boolean createUser(@Valid @RequestBody Users users) {
 
-    //     //List<Users> userLogIn = usersServices.findByUsername(users.getUsername());
-
-    //     if (result.hasFieldErrors()) {
-    //         return validation(result);
-    //     }
-    //     return ResponseEntity.status(HttpStatus.CREATED).body(usersServices.save(users));
-    // }
-
-    @PostMapping
-    public String createUser(@Valid @RequestBody Users users) {
         List<Users> userLogIn = usersServices.findByUsername(users.getUsername());
 
         if (userLogIn.size()==0) {
             usersServices.save(users);
-            return "Este usuario no existe. Creado";
+            return true;
+        } else {
+            
+            return false;
+        }
+
+        
+    }
+
+    @PostMapping("/verify")
+    public String verifyUser(@Valid @RequestBody Users users) {
+        List<Users> userLogIn = usersServices.findByUsername(users.getUsername());
+
+        if (userLogIn.size()==0) {
+            
+            return "Usuario NO registrado";
         } else {
             if (userLogIn.get(0).getPassword().equals(new Sha256Hash(users.getPassword(), "f1nd1ngn3m0", 1024).toBase64())) {
                 return "Verificado";

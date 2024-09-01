@@ -4,24 +4,46 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+
 
 @Configuration
-public class SpringSecurityConfig {
+@EnableWebSecurity
+public class SpringSecurityConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addViewControllers(@SuppressWarnings("null") ViewControllerRegistry registry) {
+		registry.addViewController("/").setViewName("logIn");
+		registry.addViewController("/index").setViewName("logIn");
+	}
+
+    
 
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests((authz) -> authz
+                
                 .requestMatchers("/api/users").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/users/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/users/verify").permitAll()
                 .anyRequest().authenticated())
+                // .formLogin((form) -> form
+                //     .loginPage("/index").permitAll())
                 .csrf(config -> config.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .formLogin(form -> form
+                    .loginPage("/index").permitAll())   
                 .build();
         
     }
+
+    
 
 
 
