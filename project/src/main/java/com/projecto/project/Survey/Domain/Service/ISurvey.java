@@ -19,4 +19,6 @@ public interface ISurvey {
 
     Optional<Survey> update(Long id, Survey product);
 
+    Survey createOne(Survey survey);
+
 }

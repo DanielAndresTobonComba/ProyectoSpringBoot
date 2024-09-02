@@ -63,4 +63,9 @@ public class SurveyServiceImpl implements ISurvey {
         return surveyOptional;
     }
 
+    @Override
+    public Survey createOne(Survey survey) {
+        return surveyRepository.save(survey);
+    }
+
 }

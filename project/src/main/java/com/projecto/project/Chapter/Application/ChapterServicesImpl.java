@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.projecto.project.Chapter.Domain.Chapter;
 
 import com.projecto.project.Chapter.Domain.IChapter;
 
 import com.projecto.project.Chapter.Infrastructure.ChapterRepository;
+import com.projecto.project.Survey.Domain.Entities.Survey;
 
 
 @Service
@@ -21,7 +24,7 @@ public class ChapterServicesImpl implements IChapter{
     ChapterRepository chapterRepository;
 
     @Override
-    public Page<Chapter> findAll(Pageable pageable) {
+    public Page<Chapter> findAllForChapter(Pageable pageable) {
 
         
     // return chapterRepository.findAll(pageable);
@@ -32,7 +35,15 @@ public class ChapterServicesImpl implements IChapter{
     @Override
     public Optional<Chapter> findById(Long id) {
         // TODO Auto-generated method stub
-        return Optional.empty();
+        return chapterRepository.findById(id);
+    }
+
+
+
+    @Override
+    public Chapter createOne(Chapter chapter) {
+        
+        return chapterRepository.save(chapter);
     }
 
     

@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -17,30 +18,34 @@ import jakarta.validation.constraints.NotEmpty;
 
 
 
-
 @Entity
 @Table(name = "surveys")
 public class Survey {
-
+    // lo mismo con este
     @Id 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private long id;
+    private long id; 
+
+    // si le mandas null colocar un id autoincremental
+/*     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id; */
 
     @NotEmpty
     @NotBlank
     @Column(name = "name" , columnDefinition = "varchar(255)" , nullable = true)
     private String name;
 
-        @NotEmpty
+    @NotEmpty
     @NotBlank
     @Column(name = "description" , columnDefinition = "varchar(255) " , nullable = true) 
     private String description;
 
-        
-    @Embedded 
-    private CreatedUpdatedTime createdUpdatedTime;
+    @Embedded
+    private CreatedUpdatedTime createdUpdatedTime; 
 
     public Survey() {
+        this.createdUpdatedTime = new CreatedUpdatedTime();
     }
 
     public long getId() {
@@ -66,6 +71,7 @@ public class Survey {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     
 
