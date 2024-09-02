@@ -17,8 +17,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Embeddable
-public class CreatedUpdatedTime {
+public class CreatedUpdatedTime  {
 
     /* Esta clase es un embebible de la fecha-hora de creación y actualización de un registro en cualquier entidad
     que llegase a tener estos dos campos.*/
@@ -31,7 +32,7 @@ public class CreatedUpdatedTime {
     @CreationTimestamp
     private LocalDateTime updatedAt;
 
-     @PrePersist
+    @PrePersist
     public void prePersistAudit() {
         createdAt = LocalDateTime.now();
     }
