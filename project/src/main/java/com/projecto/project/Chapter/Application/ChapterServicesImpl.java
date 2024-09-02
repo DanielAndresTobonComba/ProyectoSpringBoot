@@ -1,5 +1,6 @@
 package com.projecto.project.Chapter.Application;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,7 @@ public class ChapterServicesImpl implements IChapter{
     @Autowired
     ChapterRepository chapterRepository;
 
-    @Override
-    public Page<Chapter> findAllForChapter(Pageable pageable) {
 
-        
-    // return chapterRepository.findAll(pageable);
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     @Override
     public Optional<Chapter> findById(Long id) {
@@ -44,6 +38,12 @@ public class ChapterServicesImpl implements IChapter{
     public Chapter createOne(Chapter chapter) {
         
         return chapterRepository.save(chapter);
+    }
+
+
+    @Override
+    public List<Chapter> findChaptersByIdSurvey(Long idSurvey) {
+        return chapterRepository.buscarByChapterByIdSurvey(idSurvey);
     }
 
     

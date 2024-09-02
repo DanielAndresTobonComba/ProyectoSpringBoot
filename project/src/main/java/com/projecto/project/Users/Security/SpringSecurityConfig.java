@@ -36,8 +36,10 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests((authz) -> authz
-                .requestMatchers("/api/categories").permitAll()
+                .requestMatchers("/api/categories/**").permitAll()
                 .requestMatchers("/api/users").permitAll()
+                .requestMatchers("/survey/**").permitAll()
+                .requestMatchers("/chapter/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users/verify").permitAll()
                 .anyRequest().authenticated())
@@ -45,8 +47,8 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 //     .loginPage("/index").permitAll())
                 .csrf(config -> config.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .formLogin(form -> form
-                    .loginPage("/index").permitAll())   
+/*                 .formLogin(form -> form
+                    .loginPage("/index").permitAll())  */  
                 .build();
         
     }

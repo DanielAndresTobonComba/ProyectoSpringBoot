@@ -8,6 +8,7 @@ import com.projecto.project.Chapter.Domain.Chapter;
 import com.projecto.project.Chapter.Domain.IChapter;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,44 +18,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/Chapters")
+@RequestMapping("/chapter")
 public class ChapterController {
 
     @Autowired
     IChapter chapterService;
 
-    // http://localhost:8090/Chapters/createOne
 
-    /* 		{
-			"survey_id" : 1,
-			"chapter_number": "1",
-			"chapter_title": "la creacion de un capitulo"
+    // http://localhost:8090/chapter/createOne
 
-		}*/
-
-
-    // http://localhost:8090/Chapters/createOne
 
     /* {
-			"chapterNumber": "1",
+    "chapterNumber": "1",
     "chapterTitle": "Introduction to Surveys",
     "survey": {
         "id": 1
     }
+}
 
-} */
+
+*/
     @PostMapping("/createOne")
-    public Chapter createOneChapter(@RequestBody Chapter chapter) {
+    public Chapter createOne(@RequestBody Chapter chapter) {
         
         return chapterService.createOne(chapter) ;
     }
     
-    // http://localhost:8090/Chapters/findOne/1
+    // http://localhost:8090/chapter/findOne/1
 
     @GetMapping("/findOne/{id}")
     public Optional<Chapter>findOne(@PathVariable long id) {
         
         return chapterService.findById(id);
+    }
+
+     //  http://localhost:8090/chapter/findChapterBySurveyId/1
+
+    @GetMapping("/findChapterBySurveyId/{id}")
+    public List<Chapter>findChapterBySurveyId(@PathVariable Long id) {
+        
+        return chapterService.findChaptersByIdSurvey(id);
     }
 
 }
