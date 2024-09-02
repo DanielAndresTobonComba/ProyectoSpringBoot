@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -20,15 +21,22 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
     public void addViewControllers(@SuppressWarnings("null") ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("logIn");
 		registry.addViewController("/index").setViewName("logIn");
+        registry.addViewController("/survey").setViewName("newSurvey");
 	}
 
-    
+    @Override
+    public void addCorsMappings(@SuppressWarnings("null") CorsRegistry registry) {
+        registry.addMapping("/*")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("");
+    }
 
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests((authz) -> authz
-                
+                .requestMatchers("/api/categories").permitAll()
                 .requestMatchers("/api/users").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users/verify").permitAll()

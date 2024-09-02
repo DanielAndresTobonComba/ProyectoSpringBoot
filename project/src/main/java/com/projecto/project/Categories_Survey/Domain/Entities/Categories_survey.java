@@ -1,4 +1,4 @@
-package com.projecto.project.Categories_Survey.Domain;
+package com.projecto.project.Categories_Survey.Domain.Entities;
 
 
 
