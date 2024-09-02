@@ -2,6 +2,8 @@ package com.projecto.project.Embeddable;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.PrePersist;
@@ -22,10 +24,12 @@ public class CreatedUpdatedTime  {
     /* Esta clase es un embebible de la fecha-hora de creación y actualización de un registro en cualquier entidad
     que llegase a tener estos dos campos.*/
 
-    @Column(nullable = true) 
+    @Column(nullable = true, updatable = false)
+    @CreationTimestamp 
     private LocalDateTime createdAt;
 
-    @Column(nullable = true)
+    @Column(nullable = true, updatable = false)
+    @CreationTimestamp
     private LocalDateTime updatedAt;
 
     @PrePersist
