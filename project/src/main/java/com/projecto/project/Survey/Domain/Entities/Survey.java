@@ -2,19 +2,23 @@ package com.projecto.project.Survey.Domain.Entities;
 
 
 
+
+
+import com.projecto.project.Chapter.Domain.Chapter;
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-
+import java.util.List;
 
 
 
@@ -30,6 +34,11 @@ public class Survey {
 /*     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id; */
+
+
+    @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    private List<Chapter> chapters;
 
     @NotEmpty
     @NotBlank

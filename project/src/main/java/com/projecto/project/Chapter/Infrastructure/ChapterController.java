@@ -33,7 +33,16 @@ public class ChapterController {
 		}*/
 
 
-    // REVIZAR
+    // http://localhost:8090/Chapters/createOne
+
+    /* {
+			"chapterNumber": "1",
+    "chapterTitle": "Introduction to Surveys",
+    "survey": {
+        "id": 1
+    }
+
+} */
     @PostMapping("/createOne")
     public Chapter createOneChapter(@RequestBody Chapter chapter) {
         
@@ -41,9 +50,10 @@ public class ChapterController {
     }
     
     // http://localhost:8090/Chapters/findOne/1
+
     @GetMapping("/findOne/{id}")
     public Optional<Chapter>findOne(@PathVariable long id) {
-
+        
         return chapterService.findById(id);
     }
 
