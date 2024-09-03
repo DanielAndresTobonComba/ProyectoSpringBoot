@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api/categories")
-@CrossOrigin(origins = "http://localhost:8090/survey")
+@CrossOrigin(origins = "*")
 public class SurveyCategoryController {
 
     @Autowired

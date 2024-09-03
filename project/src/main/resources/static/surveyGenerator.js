@@ -1,22 +1,23 @@
 let jsonList;
 let lastidButtonActived = "but-section-1";
 
-function loginFunct() {
-            
-    alert("Hola")
-}
+document.body.setAttribute("onload", "onLoadCreate()");
 
 
 
 function onLoadCreate() {
 
-    // const corsAnywhere = 'https://cors-anywhere.herokuapp.com/';
+    // Asignar función registrar HTML en la tabla survey_json
+    let sendHTMLButton = document.getElementById("regist-button");
+    sendHTMLButton.setAttribute("onclick", "sendHTML()");
+    
 
+    
     query = "http://localhost:8090/api/categories"
     
     fetch (query, {
         method: 'GET',
-        mode: "cors",
+        // mode: "cors",
         headers: {
         'Content-type' : 'application/json; charset=UTF-8',
         'Access-Control-Allow-Origin': '*',
@@ -117,7 +118,30 @@ function createChapter() {
     newDiv.setAttribute('onclick', 'buttonVisible()')
     newDiv.innerHTML=`<div id = 'content-${idNewDiv}' class = 'centrado'><input id = 'header-chapter-${numChildren}' type='text' class = 'section-${numChildren}' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} ' onclick='createQuestion()'>Nueva pregunta</button>`;
     divContent.appendChild(newDiv);
-
-
     
 }
+
+function sendHTML() {
+    let htmlSurveyRow = document.body.innerHTML.split("<script")[0];
+    let htmlSurveyWhiteSpace = htmlSurveyRow.replace(/\n/g, "");
+    let htmlSurveyClean = htmlSurveyWhiteSpace.replace(/\s\s/g, "");
+    let surveyJsonHtml = {
+        "json" : `${htmlSurveyClean}`
+    }
+
+    //Montar en la base de datos
+    fetch ('http://localhost:8090/api/surveyjson', {
+        method: 'POST',
+        body: JSON.stringify(surveyJsonHtml),
+        headers: {
+        'Content-type' : 'application/json; charset=UTF-8'
+        },
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(error => console.error("ERROR!!!:" + error))
+
+    }
+    
+    
+

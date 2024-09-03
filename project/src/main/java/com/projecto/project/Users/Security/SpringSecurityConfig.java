@@ -52,7 +52,7 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests((authz) -> authz
                 .requestMatchers("/index").permitAll()
-                .requestMatchers("/home/camper/Documentos/carlosJhoanAguilarGalvis/SpringBoot/ProyectoSpringBoot/project/src/main/resources/static/surveyGenerator.js").permitAll()
+                .requestMatchers("/api/surveyjson", "api/surveyjson/**").permitAll()
                 .requestMatchers("/survey").permitAll()
                 .requestMatchers("/api/categories").permitAll()
                 .requestMatchers("/api/users").permitAll()

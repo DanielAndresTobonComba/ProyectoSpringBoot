@@ -32,17 +32,18 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
         }
     </style>
 </head>
-<body onload="onLoadCreate()">
-    <div class="mb-3">
+<body >
+    <div id = "surveyInfo" class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nombre de la encuesta</label>
         <input type="email" class="form-control" id="head" placeholder="Título de la encuesta">
       </div>
       <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+        <label for="exampleFormControlTextarea1" class="form-label">Decsripción</label>
         <textarea class="form-control" id="description" rows="3"></textarea>
       </div>
 
-
+    
+    
     <label for="categories">categoria</label>
     <select id = "categories" class="form-select w-25" aria-label="Default select example">
         
@@ -67,7 +68,8 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     </div>
 
 
-    <button id = "regist-button">Registrar Encuesta</button>
+    <button id = "regist-button" >Registrar Encuesta</button>
+    
     
     
     <script type="text/javascript" src="../static/surveyGenerator.js">  </script>    
