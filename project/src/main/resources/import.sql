@@ -8,13 +8,13 @@ VALUES
 
 
 INSERT INTO chapter (chapter_number, chapter_title ,survey_id) 
-VALUES ( '1' , 'Introducción a la Encuesta', 11);
+VALUES ( '1' , 'Introducción a la Encuesta', 1);
 INSERT INTO chapter (chapter_number, chapter_title ,survey_id) 
-VALUES ( '1' , 'Introducción a la Encuesta', 11);
+VALUES ( '1' , 'Introducción a la Encuesta', 1);
 INSERT INTO chapter (chapter_number, chapter_title ,survey_id) 
-VALUES ( '1' , 'Introducción a la Encuesta', 11);
+VALUES ( '1' , 'Introducción a la Encuesta', 1);
 INSERT INTO chapter (chapter_number, chapter_title ,survey_id) 
-VALUES ( '1' , 'Introducción a la Encuesta', 11);
+VALUES ( '1' , 'Introducción a la Encuesta', 1);
 
 select * from surveys;
 select * from chapter;

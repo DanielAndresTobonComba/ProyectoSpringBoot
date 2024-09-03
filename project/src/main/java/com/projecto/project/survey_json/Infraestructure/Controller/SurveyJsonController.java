@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projecto.project.Questions.Domain.Questions;
+//import com.projecto.project.Questions.Domain.Question;
 import com.projecto.project.survey_json.Domain.Entities.surveyJson;
 import com.projecto.project.survey_json.Domain.Service.ISurvey_json;
 

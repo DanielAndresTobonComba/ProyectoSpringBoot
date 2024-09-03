@@ -120,6 +120,9 @@ function deleteSurvey(id) {
                 });
             }
             console.log('Encuesta eliminada correctamente');
+        }).then(text => {
+            // Imprimir el contenido de la respuesta
+            console.log(text);
         })
 
         .catch(error => {
