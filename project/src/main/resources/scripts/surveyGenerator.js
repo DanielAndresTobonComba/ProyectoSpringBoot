@@ -1,4 +1,4 @@
-let jsonList;
+/* let jsonList;
 let lastidButtonActived = "but-section-1";
 
 function loginFunct() {
@@ -121,3 +121,19 @@ function createChapter() {
 
     
 }
+
+
+*/
+/* alert("hiii") 
+
+
+
+// Importa las funciones desde surveyApi.js
+import { getSurveyById, createSurvey, updateSurvey, deleteSurvey } from './surveyFetch';
+
+
+// Ahora puedes usar las funciones como lo necesites
+getSurveyById(1);
+createSurvey({ name: 'Nueva Encuesta', description: 'Descripción de la encuesta' });
+updateSurvey(1, { name: 'Encuesta Actualizada', description: 'Descripción actualizada' });
+deleteSurvey(1); */

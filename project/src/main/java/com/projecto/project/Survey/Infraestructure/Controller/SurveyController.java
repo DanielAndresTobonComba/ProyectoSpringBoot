@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import com.projecto.project.Survey.Domain.Service.ISurvey;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/survey")
+@CrossOrigin(origins = "*")
 public class SurveyController {
 
 
@@ -76,7 +78,7 @@ public class SurveyController {
 
     // http://localhost:8090/survey/createSurvey
 
-    /* 		{
+    /* 		{   
 			
 			"name": "Prueba de fuego",
 			"description": "Descripcion de prueba de fuego"
