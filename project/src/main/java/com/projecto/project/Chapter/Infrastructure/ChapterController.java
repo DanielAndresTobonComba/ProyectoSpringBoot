@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/chapter")
+@CrossOrigin(origins = "*")
 public class ChapterController {
 
     @Autowired
@@ -29,16 +31,17 @@ public class ChapterController {
 
 
     /* {
-    "chapterNumber": "1",
-    "chapterTitle": "Introduction to Surveys",
     "survey": {
         "id": 1
-    }
+    },
+    "chapterNumber": "01",
+    "chapterTitle": "Introducción"
+}
 }
 
 
 */
-    @PostMapping("/createOne")
+    @PostMapping("/create")
     public Chapter createOne(@RequestBody Chapter chapter) {
         
         return chapterService.createOne(chapter) ;
@@ -52,7 +55,7 @@ public class ChapterController {
         return chapterService.findById(id);
     }
 
-     //  http://localhost:8090/chapter/findChapterBySurveyId/1
+     //  http://localhost:8090/chapter/findChapterBySurveyId/11
 
     @GetMapping("/findChapterBySurveyId/{id}")
     public List<Chapter>findChapterBySurveyId(@PathVariable Long id) {
