@@ -40,8 +40,8 @@ public class Question {
     @Column(columnDefinition = "varchar(50)", nullable = true)
     private String response_type;
 
-    @Column(columnDefinition = "varchar(50)" , nullable = false)
-    private String  comment_question;
+/*     @Column(columnDefinition = "varchar(50)" , nullable = false)
+    private String  comment_question; */
 
     
 

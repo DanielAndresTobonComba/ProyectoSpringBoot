@@ -24,8 +24,6 @@ public class SurveyJson {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
 
-
-
     @Column(name = "payload" , columnDefinition = "text")
     private String json;
 

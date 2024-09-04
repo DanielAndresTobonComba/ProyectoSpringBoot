@@ -54,8 +54,8 @@ public class Chapter {
     @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Question> questions;
 
-    @Column(columnDefinition = "varchar(50)", nullable = false , name = "chapter_number")
-    private String chapterNumber;
+/*     @Column(columnDefinition = "varchar(50)", nullable = false , name = "chapter_number")
+    private String chapterNumber; */
 
     @Column(columnDefinition = "varchar(50)", nullable = false, name = "chapter_title")
     private String chapterTitle;
@@ -78,13 +78,7 @@ public class Chapter {
         this.survey = survey;
     }
 
-    public String getChapterNumber() {
-        return chapterNumber;
-    }
 
-    public void setChapterNumber(String chapterNumber) {
-        this.chapterNumber = chapterNumber;
-    }
 
     public String getChapterTitle() {
         return chapterTitle;
