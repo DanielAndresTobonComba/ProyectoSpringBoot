@@ -1,4 +1,4 @@
-package com.projecto.project.Response_Question.Infrastructure;
+/* package com.projecto.project.Response_Question.Infrastructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,3 +14,4 @@ public class ResponseQuestionControllers {
     IResponseQuestion responseQuestionServices;
 
 }
+ */

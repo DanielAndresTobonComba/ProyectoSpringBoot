@@ -1,4 +1,4 @@
-package com.projecto.project.Categories_Survey.Domain.Entities;
+/* package com.projecto.project.Categories_Survey.Domain.Entities;
 
 import java.io.Serializable;
 
@@ -33,8 +33,10 @@ public class CategoriesSurveyPk implements Serializable{
         this.idCategorySurvey = idCategorySurvey;
     }
 
+    }
 
+ */
     
     
 
-}
+

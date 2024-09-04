@@ -1,4 +1,4 @@
-package com.projecto.project.Categories_Survey.Domain.Entities;
+/* package com.projecto.project.Categories_Survey.Domain.Entities;
 
 
 
@@ -65,3 +65,4 @@ public class Categories_survey {
 
     
 }
+ */

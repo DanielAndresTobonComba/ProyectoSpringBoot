@@ -1,4 +1,4 @@
-package com.projecto.project.Response_Question.Domain;
+/* package com.projecto.project.Response_Question.Domain;
 
 
 import com.projecto.project.Response_Options.Domain.ResponseOptions;
@@ -36,3 +36,4 @@ public class ResponseQuestion {
     private String responseText;
 
 }
+ */

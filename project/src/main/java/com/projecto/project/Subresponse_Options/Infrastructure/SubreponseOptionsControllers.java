@@ -1,4 +1,4 @@
-package com.projecto.project.Subresponse_Options.Infrastructure;
+/* package com.projecto.project.Subresponse_Options.Infrastructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,3 +12,4 @@ public class SubreponseOptionsControllers {
     ISubresponseOptions subresponseOptionsServices;
 
 }
+ */
