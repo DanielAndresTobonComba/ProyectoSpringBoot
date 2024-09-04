@@ -53,7 +53,7 @@ public class ChapterServicesImpl implements IChapter{
             
             Chapter chapterDb = chapterOptional.orElseThrow();
             
-            chapterDb.setChapterNumber(chapter.getChapterNumber());
+            //chapterDb.setChapterNumber(chapter.getChapterNumber());
             chapterDb.setChapterTitle(chapter.getChapterTitle());
 
             return Optional.of(chapterRepository.save(chapterDb));

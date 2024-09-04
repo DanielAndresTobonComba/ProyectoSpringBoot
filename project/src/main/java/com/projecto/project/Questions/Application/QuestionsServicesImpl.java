@@ -39,7 +39,7 @@ public class QuestionsServicesImpl implements IQuestions {
             
             Question chapterDb = questionOptional.orElseThrow();
             
-            chapterDb.setComment_question(question.getComment_question());
+            //chapterDb.setComment_question(question.getComment_question());
             chapterDb.setQuestion_number(question.getQuestion_number());
 
             return Optional.of(questionsRepository.save(chapterDb));

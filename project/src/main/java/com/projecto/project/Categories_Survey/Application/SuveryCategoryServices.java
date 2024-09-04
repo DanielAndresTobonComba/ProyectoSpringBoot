@@ -21,6 +21,11 @@ public class SuveryCategoryServices implements ISurveyCategory {
 		return surveyCategoryRepository.findAll();
 	}
 
+	@Override
+	public SurveyCategory createOne(SurveyCategory surveyCategory) {
+		return surveyCategoryRepository.save(surveyCategory);
+	}
+
     
 
 }

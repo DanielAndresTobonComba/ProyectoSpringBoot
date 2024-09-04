@@ -1,4 +1,4 @@
-package com.projecto.project.Category.Infraestructure;
+/* package com.projecto.project.Category.Infraestructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,3 +27,4 @@ public class CatalogController {
         return serviciCatalog.createOne(catalog) ;
     }
 }
+ */

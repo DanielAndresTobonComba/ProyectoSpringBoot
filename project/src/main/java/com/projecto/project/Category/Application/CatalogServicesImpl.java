@@ -1,4 +1,4 @@
-package com.projecto.project.Category.Application;
+/* package com.projecto.project.Category.Application;
 
 
 
@@ -26,3 +26,4 @@ public class CatalogServicesImpl implements ICatalog {
 
 
 }
+ */

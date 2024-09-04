@@ -1,7 +1,7 @@
 package com.projecto.project.Response_Options.Domain;
 
 
-import com.projecto.project.Category.Domain.Catalog;
+
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 import com.projecto.project.Questions.Domain.Question;
 
@@ -35,26 +35,26 @@ public class ResponseOptions {
     @Embedded
     CreatedUpdatedTime createdUpdatedTime;
 
-    @ManyToOne
-    @JoinColumn(name = "categoryCatalogId", nullable = false)
-    private Catalog catalog;
 
     @ManyToOne
-    @JoinColumn(name = "parentResponseId", nullable = false)
-    ResponseOptions responseOptions;
-
-    @ManyToOne
-    @JoinColumn(name = "questionId", nullable = false)
+    @JoinColumn(name = "question_id", nullable = false)
     private Question questions;
 
-    @Column(columnDefinition = "varchar(30)", nullable = false)
-    private String typeComponentHtml;
-
     @Column(columnDefinition = "text", nullable = false)
-    private String commentResponse;
+    private String response;
 
+/*     @Column(columnDefinition = "varchar(30)", nullable = false)
+    private String typeComponentHtml; */
+
+
+/* 
     @Column(columnDefinition = "text", nullable = false)
-    private String optionText;
+    private String optionText; */
+
+    /*     @ManyToOne
+    @JoinColumn(name = "parentResponseId", nullable = false)
+    ResponseOptions responseOptions;
+ */
 
 
 }
