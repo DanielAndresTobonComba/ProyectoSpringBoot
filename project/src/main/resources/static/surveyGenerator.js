@@ -1,7 +1,13 @@
 let jsonList;
-let lastidButtonActived = "but-section-1";
+// let lastidButtonActived = "";
 
 document.body.setAttribute("onload", "onLoadCreate()");
+document.getElementById("categories").setAttribute("onchange", "seeCategory()");
+
+function seeCategory() {
+    let categoryElement = document.getElementById("categories");
+    console.log(categoryElement.value);
+}
 
 
 
@@ -40,12 +46,7 @@ function onLoadCreate() {
 
 
 
-// function readCategory() {
-//     let categories = jsonList;
-//     let category_select = document.getElementById("categories");
-//     console.log(category_select.value);
-//     console.log(categories);
-// }
+
 
 function createQuestion() {
     let  count = 1;
@@ -54,19 +55,27 @@ function createQuestion() {
         count++;
 
         if (count ===2 ) {
-            let buttonQuestion = document.getElementById(lastidButtonActived);
             
 
             let className = e.target.className; 
             let firtPartIdContent= "content-";
+            let idNewQuestionContent = "content-question-"
             let secondPartIdContent = className.split(" ")[2];
             let idContentSection = firtPartIdContent.concat(secondPartIdContent)
             let divIdContentSection = document.getElementById(idContentSection);
-            let newQuestion = document.createElement("input");
-            newQuestion.value="Nueva pregunta";
-            newQuestion.className= secondPartIdContent;
-            divIdContentSection.appendChild(newQuestion);
-            buttonQuestion.style.visibility= "visible";
+            let numQuestions = divIdContentSection.children.length;
+            let numChapter = divIdContentSection.children[0].id.split("-")[2];
+            idNewQuestionContent = idNewQuestionContent + `${numQuestions}-chapter-${numChapter}`;
+            console.log(idNewQuestionContent);
+            let newQuestionContent = document.createElement("div");
+            newQuestionContent.id= idNewQuestionContent;
+            newQuestionContent.className="w-100";
+            newQuestionContent.innerHTML= `<div id="{}" class="d-flex justify-content-around centrado-vertical"><input class="question section-{} w-50 border border-0 border-bottom p-2 bg-body-tertiary"><select id = "categories" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded" aria-label="Default select example"><option value="" selected>Tipo de respuesta</option></select><button type="button" class="btn-close" aria-label="Close"></button></div>`;
+            // newQuestion.value="Nueva pregunta";
+            // newQuestion.className= secondPartIdContent;
+            // newQuestion.classList.add("w-100");
+            // newQuestion.classList.add("border", "border-0", "border-bottom", "p-2", "bg-body-tertiary");
+            divIdContentSection.appendChild(newQuestionContent);
         }
         
     }
@@ -76,35 +85,6 @@ function createQuestion() {
     
 }
 
-function buttonVisible() {
-    let  count = 1;
-    const myCustomListener = function(e) {
-        e.stopPropagation();
-        count++;
-
-        if (count==2) {
-            let idSection = e.target.id;
-            if (idSection.split("-").length == 2) {
-                let idButtonToActive = "but-" + idSection;
-
-                let buttonQuestionToHide = document.getElementById(lastidButtonActived);
-                let buttonQuestionToAppear = document.getElementById(idButtonToActive);
-
-                buttonQuestionToHide.style.visibility= "collapse";
-                buttonQuestionToAppear.style.visibility = "visible";
-
-                lastidButtonActived = idButtonToActive;
-
-            }
-            
-
-        }
-    }
-
-    document.body.addEventListener("click", myCustomListener); 
-
-
-}
 
 function createChapter() {
     let divContent = document.getElementById("content");
@@ -113,10 +93,11 @@ function createChapter() {
     let idNewDiv = "section-" + ++numChildren;
     newDiv.id=idNewDiv;
     newDiv.classList.add("centrado");
-    newDiv.classList.add("p-5");
+    newDiv.classList.add("p-3");
     newDiv.classList.add("section");
-    newDiv.setAttribute('onclick', 'buttonVisible()')
-    newDiv.innerHTML=`<div id = 'content-${idNewDiv}' class = 'centrado'><input id = 'header-chapter-${numChildren}' type='text' class = 'section-${numChildren}' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} ' onclick='createQuestion()'>Nueva pregunta</button>`;
+    newDiv.classList.add("w-100");
+    newDiv.classList.add("shadow", "p-3", "mb-5", "bg-body-tertiary", "rounded");
+    newDiv.innerHTML=`<div id = 'content-${idNewDiv}' class = 'centrado w-75'><input id = 'header-chapter-${numChildren}' type='text' class = 'section-${numChildren} p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} btn btn-outline-warning ' onclick='createQuestion()'>Nueva pregunta</button>`;
     divContent.appendChild(newDiv);
     
 }

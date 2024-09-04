@@ -13,6 +13,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
             flex-direction: column;
             align-items: center;
             gap: 10px;
+            margin: 0;
         }
 
         .centrado {
@@ -23,39 +24,53 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
         }
 
         .section {
-            border: 1px solid black;
+           
              
         }
 
         .but-question {
             visibility: collapse;
         }
+
+        #content {
+            width: 100%;
+        }
+
+        .section:hover .but-question {
+            visibility: visible;
+        }
+
+        .centrado-vertical {
+            align-items: center;
+        }
+
     </style>
 </head>
-<body >
-    <div id = "surveyInfo" class="mb-3">
+<body class = "p-5">
+    <div id = "surveyInfo" class="mb-3 w-50 text-center">
         <label for="exampleFormControlInput1" class="form-label">Nombre de la encuesta</label>
-        <input type="email" class="form-control" id="head" placeholder="Título de la encuesta">
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label">Decsripción</label>
-        <textarea class="form-control" id="description" rows="3"></textarea>
-      </div>
+        <input type="email" class="form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded" id="head" placeholder="Título de la encuesta">
+    </div>
+
+    <div class="mb-3 w-50 text-center">
+        <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+        <textarea class="form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded" id="description" rows="3"></textarea>
+    </div>
 
     
     
     <label for="categories">categoria</label>
-    <select id = "categories" class="form-select w-25" aria-label="Default select example">
+    <select id = "categories" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded" aria-label="Default select example">
         
     </select>
 
     <div id = "content" class = "content centrado p-2">
-        <div id = "section-1" class = "centrado p-5 section" onclick="buttonVisible()">
-            <div id = "content-section-1" class = "centrado">
-                <input id = "header-chapter-1" type="text" class = "section-1" value = "Capítulo 1">
+        <div id = "section-1" class = "centrado p-3 section w-100 shadow p-3 mb-5 bg-body-tertiary rounded">
+            <div id = "content-section-1" class = "centrado w-75">
+                <input id = "header-chapter-1" type="text" class = "section-1 p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100" value = "Capítulo 1">
             </div>
             
-            <button id = "but-section-1" class = " but-question section-1 " onclick="createQuestion()">Nueva pregunta</button>
+            <button id = "but-section-1" class = " but-question section-1 btn btn-outline-warning " onclick="createQuestion()">Nueva pregunta</button>
 
         </div>
         
@@ -63,16 +78,16 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     </div>
     
     <div id = "new-buttons">
-        <button onclick = "createChapter()">Nuevo cap</button>
+        <button onclick = "createChapter()" class = "btn btn-primary btn-lg">Nuevo cap</button>
         
     </div>
 
 
-    <button id = "regist-button" >Registrar Encuesta</button>
+    <button id = "regist-button" class = "btn btn-outline-success">Registrar Encuesta</button>
     
     
     
-    <script type="text/javascript" src="surveyGenerator.js">  </script>    
+    <script type="text/javascript" src="../static/surveyGenerator.js">  </script>    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
  
