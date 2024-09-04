@@ -1,4 +1,4 @@
-package com.projecto.project.Response_Question.Application;
+/* package com.projecto.project.Response_Question.Application;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,3 +13,4 @@ public class ResponseQuestionServicesImpl implements IResponseQuestion {
     ResponseQuestionRepository responseQuestionRepository;
 
 }
+ */

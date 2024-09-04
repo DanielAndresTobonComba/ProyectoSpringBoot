@@ -1,4 +1,4 @@
-package com.projecto.project.Catalog.Application;
+package com.projecto.project.Category.Application;
 
 
 
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
-import com.projecto.project.Catalog.Domain.Catalog;
-import com.projecto.project.Catalog.Domain.ICatalog;
-import com.projecto.project.Catalog.Infraestructure.CatalogRepository;
+import com.projecto.project.Category.Domain.Catalog;
+import com.projecto.project.Category.Domain.ICatalog;
+import com.projecto.project.Category.Infraestructure.CatalogRepository;
 
 @Service
 public class CatalogServicesImpl implements ICatalog {

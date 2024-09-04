@@ -1,4 +1,4 @@
-package com.projecto.project.Catalog.Infraestructure;
+package com.projecto.project.Category.Infraestructure;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projecto.project.Catalog.Domain.Catalog;
-import com.projecto.project.Catalog.Domain.ICatalog;
+import com.projecto.project.Category.Domain.Catalog;
+import com.projecto.project.Category.Domain.ICatalog;
 import com.projecto.project.Chapter.Domain.Chapter;
 
 @RestController

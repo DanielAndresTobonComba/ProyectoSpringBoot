@@ -1,7 +1,7 @@
 package com.projecto.project.Response_Options.Domain;
 
 
-import com.projecto.project.Catalog.Domain.Catalog;
+import com.projecto.project.Category.Domain.Catalog;
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 import com.projecto.project.Questions.Domain.Question;
 
