@@ -13,7 +13,7 @@ public interface IQuestions {
 
     Question createOne(Question quetion);
 
-    List<Question> findQuestionByIdSurvey(Long idQuestion);
+    List<Question> findQuestionByIdChapter(Long idQuestion);
 
     Optional<Question> update(Long id, Question question);
 

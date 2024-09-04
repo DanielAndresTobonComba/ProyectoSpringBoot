@@ -27,20 +27,20 @@ function fetchSurveyById(id) {
 }
 
 // Ejemplo de uso:
-fetchSurveyById(15);
+fetchQuestionById(15);
 
 
 // peticion post 
 
-function createSurvey(surveyData) {
-    const urlPost = 'http://localhost:8090/survey/createSurvey';
+function createQuestion(newQuestionData) {
+    const urlPost = 'http://localhost:8090/question/createOne';
 
     fetch(urlPost, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(surveyData)
+        body: JSON.stringify(newQuestionData)
     })
         .then(response => {
             if (!response.ok) {
@@ -51,32 +51,36 @@ function createSurvey(surveyData) {
             return response.text();  // O usar response.json() si la respuesta es JSON
         })
         .then(data => {
-            console.log('Encuesta creada:', data);
+            console.log('Pregunta creada:', data);
             const createdSurvey = JSON.parse(data);
             console.log(createdSurvey);
         })
         .catch(error => {
-            console.error('Error al crear la encuesta:', error);
+            console.error('Error al crear la pregunta:', error);
         });
 }
 
 // Ejemplo de uso:
-const newSurveyData = {
-    name: 'Encuesta de Satisfacción',
-    description: 'Encuesta para evaluar la satisfacción del cliente'
+const newQuestionData = {
+    "chapter": {
+        "id": 20
+    },
+    "question_number": "Q1",
+    "response_type": "Multiple Choice",
+    "comment_question": "What is your favorite color?"
 };
-createSurvey(newSurveyData);
+createQuestion(newQuestionData);
 
 // PETICION PUT
-function updateSurvey(id, updatedSurveyData) {
-    const urlPut = `http://localhost:8090/survey/updateSurvey/${id}`;
+function updateQuestion(id, updatedQuestionData) {
+    const urlPut = `http://localhost:8090/question/updateQuestion/${id}`;
 
     fetch(urlPut, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedSurveyData)
+        body: JSON.stringify(updatedQuestionData)
     })
         .then(response => {
             if (!response.ok) {
@@ -87,26 +91,30 @@ function updateSurvey(id, updatedSurveyData) {
             return response.text();  // O usar response.json() si la respuesta es JSON
         })
         .then(data => {
-            console.log('Encuesta actualizada:', data);
+            console.log('Pregunta actualizada:', data);
             const updatedSurvey = JSON.parse(data);
             console.log(updatedSurvey);
         })
         .catch(error => {
-            console.error('Error al actualizar la encuesta:', error);
+            console.error('Error al actualizar la Pregunta:', error);
         });
 }
 
 // Ejemplo de uso:
-const updatedSurveyData = {
-    name: 'Encuesta de Satisfacción Actualizada',
-    description: 'Descripción actualizada de la encuesta'
+const updatedQuestionData = {
+    "chapter": {
+        "id": 20
+    },
+    "question_number": "Q12",
+    "response_type": "Multiple Choices baby",
+    "comment_question": "Updating question fom js fetch?"
 };
-updateSurvey(15, updatedSurveyData);
+updateQuestion(16, updatedQuestionData);
 
 // PETECION DELETE
 
-function deleteSurvey(id) {
-    const urlDelete = `http://localhost:8090/survey/deleteOne/${id}`;
+function deleteQuestion(id) {
+    const urlDelete = `http://localhost:8090/question/deleteOne/${id}`;
 
     fetch(urlDelete, {
         method: 'DELETE',
@@ -129,20 +137,19 @@ function deleteSurvey(id) {
             console.log(text);
         })
         .catch(error => {
-            console.error('Error al eliminar la encuesta:', error);
+            console.error('Error al eliminar la pregunta:', error);
         });
 }
 
 // Ejemplo de uso:
-deleteSurvey(14);
+deleteQuestion(14);
 
 
 
+// PETICION LIST ALL QUESTIONS BY CHAPTER ID
 
-// PETICION LIST ALL
-
-function surveyAll() {
-    const url = `http://localhost:8090/survey/findAll`;
+function fetchQuestionsByChapterId(id) {
+    const url = `http://localhost:8090/question/findQuestionsByChapterId/${id}`;
 
     fetch(url, {
         method: 'GET',
@@ -170,4 +177,4 @@ function surveyAll() {
 }
 
 // Ejemplo de uso:
-surveyAll();
+fetchQuestionsByChapterId(20);

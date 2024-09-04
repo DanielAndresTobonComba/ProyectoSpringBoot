@@ -37,10 +37,10 @@ public class Question {
     @Column(columnDefinition = "varchar(10)", nullable = false)
     private String question_number;
 
-    @Column(columnDefinition = "varchar(20)", nullable = true)
+    @Column(columnDefinition = "varchar(50)", nullable = true)
     private String response_type;
 
-    @Column(columnDefinition = "text" , nullable = false)
+    @Column(columnDefinition = "varchar(50)" , nullable = false)
     private String  comment_question;
 
     
