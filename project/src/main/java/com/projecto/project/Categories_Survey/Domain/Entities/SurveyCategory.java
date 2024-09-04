@@ -1,7 +1,7 @@
 package com.projecto.project.Categories_Survey.Domain.Entities;
 
 
-import com.projecto.project.Chapter.Domain.Chapter;
+
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 
@@ -12,7 +12,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
