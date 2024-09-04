@@ -1,7 +1,7 @@
 package com.projecto.project.Response_Options.Domain;
 
 
-import com.projecto.project.Category.Domain.Catalog;
+
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 import com.projecto.project.Questions.Domain.Question;
 
@@ -35,9 +35,7 @@ public class ResponseOptions {
     @Embedded
     CreatedUpdatedTime createdUpdatedTime;
 
-    @ManyToOne
-    @JoinColumn(name = "categoryCatalogId", nullable = false)
-    private Catalog catalog;
+
 
     @ManyToOne
     @JoinColumn(name = "parentResponseId", nullable = false)
