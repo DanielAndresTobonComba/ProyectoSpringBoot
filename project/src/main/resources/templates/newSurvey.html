@@ -48,8 +48,9 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
             visibility: collapse;
         }
 
-        .header-question .close-button {
+        .header-question button{
             visibility: collapse;
+            transition: box-shadow 0.3s;
         }
 
         .header-question:hover select {
@@ -58,6 +59,14 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
         .header-question:hover button {
             visibility: visible;
+        }
+
+        .header-question:hover .close-button:hover {
+            
+            -webkit-box-shadow: 1px 2px 23px -3px rgba(0,0,0,0.75);
+            -moz-box-shadow: 1px 2px 23px -3px rgba(0,0,0,0.75);
+            box-shadow: 1px 2px 23px -3px rgba(0,0,0,0.75)
+            transition: box-shadow 0.3s;
         }
 
 
