@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Questions {
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,17 +31,17 @@ public class Questions {
     private CreatedUpdatedTime createdUpdatedTime;
 
     @ManyToOne ()
-    @JoinColumn (name = "chapterId", nullable = false)
+    @JoinColumn (name = "chapter_id", nullable = false)
     private Chapter chapter;
 
     @Column(columnDefinition = "varchar(10)", nullable = false)
-    private String questionNumber;
+    private String question_number;
 
-    @Column(columnDefinition = "varchar(20)", nullable = false)
-    private String responseType;
+    @Column(columnDefinition = "varchar(50)", nullable = true)
+    private String response_type;
 
-    @Column(columnDefinition = "text")
-    private String  commentQuestion;
+    @Column(columnDefinition = "varchar(50)" , nullable = false)
+    private String  comment_question;
 
     
 

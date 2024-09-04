@@ -4,8 +4,10 @@ package com.projecto.project.Survey.Domain.Entities;
 
 
 
+import com.projecto.project.Categories_Survey.Domain.Entities.SurveyCategory;
 import com.projecto.project.Chapter.Domain.Chapter;
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -14,6 +16,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -37,8 +41,13 @@ public class Survey {
 
 
     @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
-
     private List<Chapter> chapters;
+
+
+    @ManyToOne
+    @JoinColumn(name = "survey_category_id", nullable = false )
+    private SurveyCategory survey_category;
+
 
     @NotEmpty
     @NotBlank

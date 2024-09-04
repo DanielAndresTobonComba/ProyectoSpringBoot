@@ -1,6 +1,9 @@
 package com.projecto.project.Chapter.Domain;
 
+import java.util.List;
+
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
+import com.projecto.project.Questions.Domain.Question;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 
 import jakarta.persistence.CascadeType;
@@ -12,9 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
-import java.time.LocalDateTime;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Chapter {
@@ -49,6 +50,9 @@ public class Chapter {
     @ManyToOne
     @JoinColumn(name = "survey_id", nullable = false )
     private Survey survey;
+
+    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Question> questions;
 
     @Column(columnDefinition = "varchar(50)", nullable = false , name = "chapter_number")
     private String chapterNumber;
@@ -89,6 +93,7 @@ public class Chapter {
     public void setChapterTitle(String chapterTitle) {
         this.chapterTitle = chapterTitle;
     }
+
 
     
     

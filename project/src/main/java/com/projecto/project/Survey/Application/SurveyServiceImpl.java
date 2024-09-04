@@ -51,7 +51,9 @@ public class SurveyServiceImpl implements ISurvey {
     @Transactional
     public Optional<Survey> update(Long id, Survey product) {
         Optional<Survey> surveyOptional = surveyRepository.findById(id);
+
         if (surveyOptional.isPresent()) {
+            
             Survey surveyDb = surveyOptional.orElseThrow();
             
             surveyDb.setName(product.getName());
