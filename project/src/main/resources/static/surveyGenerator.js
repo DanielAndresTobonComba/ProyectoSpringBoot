@@ -60,17 +60,21 @@ function createQuestion() {
             let className = e.target.className; 
             let firtPartIdContent= "content-";
             let idNewQuestionContent = "content-question-"
+            let idNewHeaderQuestion = "header-question-";
+            let idNewTextQuestion = "text-question-";
             let secondPartIdContent = className.split(" ")[2];
             let idContentSection = firtPartIdContent.concat(secondPartIdContent)
             let divIdContentSection = document.getElementById(idContentSection);
             let numQuestions = divIdContentSection.children.length;
             let numChapter = divIdContentSection.children[0].id.split("-")[2];
             idNewQuestionContent = idNewQuestionContent + `${numQuestions}-chapter-${numChapter}`;
+            idNewHeaderQuestion = idNewHeaderQuestion + `${numQuestions}-chapter-${numChapter}`;
+            idNewTextQuestion = idNewTextQuestion + `${numQuestions}-chapter-${numChapter}`;
             console.log(idNewQuestionContent);
             let newQuestionContent = document.createElement("div");
             newQuestionContent.id= idNewQuestionContent;
             newQuestionContent.className="w-100";
-            newQuestionContent.innerHTML= `<div id="{}" class="d-flex justify-content-around centrado-vertical"><input class="question section-{} w-50 border border-0 border-bottom p-2 bg-body-tertiary"><select id = "categories" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded" aria-label="Default select example"><option value="" selected>Tipo de respuesta</option></select><button type="button" class="btn-close" aria-label="Close"></button></div>`;
+            newQuestionContent.innerHTML= `<div id="${idNewHeaderQuestion}" class="d-flex justify-content-around centrado-vertical header-question"><input class="question ${idNewTextQuestion} w-50 border border-0 border-bottom p-2 bg-body-tertiary"><select id = "categories" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded" aria-label="Default select example"><option value="" selected>Tipo de respuesta</option></select><button type="button" class="btn-close close-button" aria-label="Close"></button></div>`;
             // newQuestion.value="Nueva pregunta";
             // newQuestion.className= secondPartIdContent;
             // newQuestion.classList.add("w-100");
