@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.projecto.project.survey_json.Domain.Entities.surveyJson;
+import com.projecto.project.survey_json.Domain.Entities.SurveyJson;
 import com.projecto.project.survey_json.Domain.Service.ISurvey_json;
 import com.projecto.project.survey_json.Infraestructure.Repository.SurveyJsonRepository;
 
@@ -18,13 +18,24 @@ public class SurveyJsonServiceImpl implements ISurvey_json {
     SurveyJsonRepository surveyJsonRepository;
 
     @Override
-    public Optional<surveyJson> findById(Long id) {
+    public Optional<SurveyJson> findById(Long id) {
         return surveyJsonRepository.findById(id);
     }
 
     @Override
-    public Page<surveyJson> findAll(Pageable pageable) {
+    public Page<SurveyJson> findAll(Pageable pageable) {
+
         return surveyJsonRepository.findAll(pageable);
+    
     }
+
+    @Override
+    public SurveyJson createSurvey(SurveyJson surveyJson) {
+
+        return surveyJsonRepository.save(surveyJson);
+    
+    }
+
+    
 
 }

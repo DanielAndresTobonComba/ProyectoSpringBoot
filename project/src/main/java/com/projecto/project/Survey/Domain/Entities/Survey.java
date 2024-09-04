@@ -7,7 +7,7 @@ package com.projecto.project.Survey.Domain.Entities;
 import com.projecto.project.Categories_Survey.Domain.Entities.SurveyCategory;
 import com.projecto.project.Chapter.Domain.Chapter;
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
-import com.projecto.project.survey_json.Domain.Entities.surveyJson;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

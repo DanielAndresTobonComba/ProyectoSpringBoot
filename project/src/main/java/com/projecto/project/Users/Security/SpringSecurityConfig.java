@@ -4,16 +4,22 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig implements WebMvcConfigurer {
+
+    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+        "classpath:/META-INF/resources/", "classpath:/resources/",
+        "classpath:/static/", "classpath:/public/" };
 
     @Override
     public void addViewControllers(@SuppressWarnings("null") ViewControllerRegistry registry) {
@@ -30,10 +36,25 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .allowedHeaders("");
     }
 
+    
+
+    @Override
+    public void addResourceHandlers(@SuppressWarnings("null") ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+            .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+    }
+
+
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests((authz) -> authz
                 .requestMatchers("/api/categories/**").permitAll()
+                .requestMatchers("/index").permitAll()
+                .requestMatchers("/api/surveyjson", "api/surveyjson/**").permitAll()
+                .requestMatchers("/survey").permitAll()
+                .requestMatchers("/static/**").permitAll()
+                .requestMatchers("/api/categories").permitAll()
                 .requestMatchers("/api/users").permitAll()
                 .requestMatchers("/survey/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/survey").permitAll()
@@ -49,14 +70,13 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .requestMatchers(HttpMethod.POST, "/api/users/verify").permitAll()
 
                 .anyRequest().authenticated())
+                
                 // .formLogin((form) -> form
                 // .loginPage("/index").permitAll())
                 .csrf(config -> config.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                /*
-                 * .formLogin(form -> form
-                 * .loginPage("/index").permitAll())
-                 */
+                .formLogin(form -> form
+                    .loginPage("/index").permitAll())   
                 .build();
 
     }

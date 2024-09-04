@@ -13,18 +13,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "survey_json")
-public class surveyJson {
+public class SurveyJson {
 
     @Id 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "payload" , columnDefinition = "jsonb")
+
+
+    @Column(name = "payload" , columnDefinition = "text")
     private String json;
 
     @ManyToOne
@@ -34,7 +37,7 @@ public class surveyJson {
     @Embedded 
     private CreatedUpdatedTime createdUpdatedTime;
 
-    public surveyJson() {
+    public SurveyJson() {
     }
 
     public long getId() {
