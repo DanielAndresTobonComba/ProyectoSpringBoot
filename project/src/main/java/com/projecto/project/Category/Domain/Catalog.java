@@ -1,4 +1,4 @@
-package com.projecto.project.Catalog.Domain;
+/* package com.projecto.project.Category.Domain;
 
 
 
@@ -48,3 +48,4 @@ public class Catalog {
     
 
 }
+ */

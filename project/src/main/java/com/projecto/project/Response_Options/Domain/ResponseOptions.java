@@ -1,9 +1,9 @@
 package com.projecto.project.Response_Options.Domain;
 
 
-import com.projecto.project.Catalog.Domain.Catalog;
+
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
-import com.projecto.project.Questions.Domain.Questions;
+import com.projecto.project.Questions.Domain.Question;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -35,26 +35,26 @@ public class ResponseOptions {
     @Embedded
     CreatedUpdatedTime createdUpdatedTime;
 
-    @ManyToOne
-    @JoinColumn(name = "categoryCatalogId", nullable = false)
-    private Catalog catalog;
 
     @ManyToOne
+    @JoinColumn(name = "question_id", nullable = false)
+    private Question questions;
+
+    @Column(columnDefinition = "text", nullable = false)
+    private String response;
+
+/*     @Column(columnDefinition = "varchar(30)", nullable = false)
+    private String typeComponentHtml; */
+
+
+/* 
+    @Column(columnDefinition = "text", nullable = false)
+    private String optionText; */
+
+    /*     @ManyToOne
     @JoinColumn(name = "parentResponseId", nullable = false)
     ResponseOptions responseOptions;
-
-    @ManyToOne
-    @JoinColumn(name = "questionId", nullable = false)
-    private Questions questions;
-
-    @Column(columnDefinition = "varchar(30)", nullable = false)
-    private String typeComponentHtml;
-
-    @Column(columnDefinition = "text", nullable = false)
-    private String commentResponse;
-
-    @Column(columnDefinition = "text", nullable = false)
-    private String optionText;
+ */
 
 
 }

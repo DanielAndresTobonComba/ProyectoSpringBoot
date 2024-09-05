@@ -43,7 +43,13 @@ public class UsersControllers {
         return usersServices.findByUsername(username);
     }
 
-   
+   /* {
+			
+			"username": "Juan Pablo",
+			"password": "1234jp",
+			"admin" : true
+
+		}  */
 
     @PostMapping ("/login")
     public boolean createUser(@Valid @RequestBody Users users) {

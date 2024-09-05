@@ -1,29 +1,30 @@
 package com.projecto.project.Survey.Infraestructure.Controller;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import com.projecto.project.Survey.Domain.Service.ISurvey;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
 @RequestMapping("/survey")
+@CrossOrigin(origins = "*")
 public class SurveyController {
 
 
@@ -34,8 +35,9 @@ public class SurveyController {
     // http://localhost:8090/survey/findAll
     
     @GetMapping("/findAll")
-    public Page<Survey> findAll(Pageable pageable) {
-        return servicio.findAll(pageable);
+    public ResponseEntity< Page<Survey> >findAll(Pageable pageable) {
+
+        return ResponseEntity.ok().body(servicio.findAll(pageable));
     }
 
     // http://localhost:8090/survey/findOne/1
@@ -75,7 +77,7 @@ public class SurveyController {
 
     // http://localhost:8090/survey/createSurvey
 
-    /* 		{
+    /* 		{   
 			
 			"name": "Prueba de fuego",
 			"description": "Descripcion de prueba de fuego"
@@ -88,5 +90,23 @@ public class SurveyController {
        return servicio.createOne(survey);
 
     }
+
+
+   // http://localhost:8090/survey/updateSurvey/{id}
+
+   /* {
+			
+			"name": "Prueba de fuego",
+			"description": "Descripcion de prueba de fuego"
+
+		}  */
+
+    @PutMapping("/updateSurvey/{id}") 
+        public  Optional <Survey> updateOne (@PathVariable Long id , @RequestBody Survey survey) {
+
+            return servicio.update(id, survey);
+
+        }
+    
 
 }

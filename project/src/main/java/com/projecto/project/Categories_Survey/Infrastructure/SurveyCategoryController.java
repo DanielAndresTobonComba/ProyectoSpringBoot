@@ -12,11 +12,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
 @RequestMapping("/api/categories")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:8090/survey")
 public class SurveyCategoryController {
 
     @Autowired
@@ -33,6 +35,18 @@ public class SurveyCategoryController {
 
         }
         return names;
+    }
+
+
+    @Autowired 
+    private ISurveyCategory serviciCatalog;
+
+    // http://localhost:8090/catalog/createOne
+
+    @PostMapping("/createOne")
+    public SurveyCategory createOne(@RequestBody SurveyCategory surveyCategory) {
+        
+        return serviciCatalog.createOne(surveyCategory) ;
     }
     
 

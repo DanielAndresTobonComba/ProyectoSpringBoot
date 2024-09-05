@@ -1,6 +1,8 @@
 package com.projecto.project.survey_json.Domain.Entities;
 
+
 import java.time.LocalDateTime;
+
 
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 import com.projecto.project.Survey.Domain.Entities.Survey;
@@ -22,7 +24,6 @@ public class SurveyJson {
     @Id 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
-
 
 
     @Column(name = "payload" , columnDefinition = "text")
