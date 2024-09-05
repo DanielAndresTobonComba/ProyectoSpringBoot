@@ -2,12 +2,14 @@ package com.projecto.project.Response_Options.Domain;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 import com.projecto.project.Questions.Domain.Question;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,32 +31,20 @@ public class ResponseOptions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
-    private String optionValue;
-
     @Embedded
     CreatedUpdatedTime createdUpdatedTime;
 
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "question_id", nullable = false)
-    private Question questions;
+    @JsonIgnore
+    private Question question;
 
     @Column(columnDefinition = "text", nullable = false)
     private String response;
 
-/*     @Column(columnDefinition = "varchar(30)", nullable = false)
-    private String typeComponentHtml; */
+    @Column(columnDefinition = "text")
+    private String reference_html;
 
-
-/* 
-    @Column(columnDefinition = "text", nullable = false)
-    private String optionText; */
-
-    /*     @ManyToOne
-    @JoinColumn(name = "parentResponseId", nullable = false)
-    ResponseOptions responseOptions;
- */
 
 
 }

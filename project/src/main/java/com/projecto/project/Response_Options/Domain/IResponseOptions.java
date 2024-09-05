@@ -1,5 +1,8 @@
  package com.projecto.project.Response_Options.Domain;
 
-public interface IResponseOptions {
 
+
+public interface IResponseOptions {
+    
+    ResponseOptions createOne(ResponseOptions responseOptions);
 }

@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(name = "Survey_category")
+@Table(name = "survey_category")
 public class SurveyCategory {
 
     @Id
@@ -27,6 +27,9 @@ public class SurveyCategory {
 
     @Column(columnDefinition = "varchar(255)")
     private String name;
+
+    @Column(columnDefinition = "text" , nullable = true)
+    private String reference_html;
     
     @Embedded 
     private CreatedUpdatedTime createdUpdatedTime;

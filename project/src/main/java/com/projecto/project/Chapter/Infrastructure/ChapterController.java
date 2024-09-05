@@ -30,14 +30,19 @@ public class ChapterController {
     // http://localhost:8090/chapter/create
 
 
-    /* {
-    "survey": {
-        "id": 1
-    },
-    "chapterNumber": "01",
-    "chapterTitle": "Introducción"
+    /* 
+    
+{	 
+	
+	"survey": {
+    "id": 28
+  },
+ 
+  "reference_html": "<p>Referencia a la encuesta</p>",
+  "chapter_title": "titulo capitulo"
+
 }
-}
+
 
 
 */

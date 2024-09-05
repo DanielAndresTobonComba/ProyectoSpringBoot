@@ -1,11 +1,13 @@
 package com.projecto.project.Survey.Domain.Service;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-
+import com.projecto.project.Response_Options.Domain.ResponseOptions;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 
 
@@ -21,6 +23,7 @@ public interface ISurvey {
 
     Survey createOne(Survey survey);
 
+  // Survey getSurveyWithDetails(Long surveyId);
     
 
 }

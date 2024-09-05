@@ -1,5 +1,5 @@
 function createCatalog(newCatalogData) {
-    const urlPost = 'http://localhost:8090/catalog/createOne';
+    const urlPost = 'http://localhost:8090/api/categories/createOne';
 
     fetch(urlPost, {
         method: 'POST',
@@ -28,9 +28,10 @@ function createCatalog(newCatalogData) {
 
 // Ejemplo de uso:
 const newCatalogData = {
-    name: 'Prueba de fuego catalog'
 
-};
+    "name": "deportes"
+    };
+    
 createCatalog(newCatalogData);
 
 
