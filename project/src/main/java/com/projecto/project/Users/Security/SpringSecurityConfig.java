@@ -42,7 +42,7 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(@SuppressWarnings("null") ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
+        registry.addResourceHandler("/static/**")
             .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
     }
 
