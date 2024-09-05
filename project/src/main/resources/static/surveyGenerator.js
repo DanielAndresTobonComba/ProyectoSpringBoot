@@ -13,7 +13,7 @@ function onLoadCreate() {
     
 
     
-    query = "http://localhost:8090/api/categories"
+    query = "http://localhost:8090/api/categories/getCategories"
     
     fetch (query, {
         method: 'GET',
@@ -26,6 +26,7 @@ function onLoadCreate() {
         .then(response => response.json())
         .then(json => {
             jsonList = json;
+            console.log(json);
             const category_select = document.getElementById("categories");
             json.forEach(element => {
                 let option_element = document.createElement("option");
@@ -307,7 +308,7 @@ function sendHTML() {
     let htmlSurveyWhiteSpace = htmlSurveyRow.replace(/\n/g, "");
     let htmlSurveyClean = htmlSurveyWhiteSpace.replace(/\s\s/g, "");
     let surveyJsonHtml = {
-        "json" : `${htmlSurveyClean}`
+        "html" : `${htmlSurveyClean}`
     }
 
     //Montar en la base de datos

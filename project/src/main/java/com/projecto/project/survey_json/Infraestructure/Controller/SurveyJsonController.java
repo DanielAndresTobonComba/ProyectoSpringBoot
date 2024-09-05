@@ -33,7 +33,7 @@ public class SurveyJsonController {
 
         if (surveyJson.isPresent()) {
             SurveyJson surveyHTML = surveyJson.get();
-            return surveyHTML.getJson();
+            return surveyHTML.getHtml();
         }
 
         return ResponseEntity.notFound().toString();

@@ -47,8 +47,8 @@ public class Survey {
     private CreatedUpdatedTime createdUpdatedTime; 
 
     
-    @ManyToOne
-    @JoinColumn(name = "survey_category", nullable = false )
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "survey_category", nullable = true)
     private SurveyCategory survey_category;
 
     @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)

@@ -1,11 +1,11 @@
 package com.projecto.project.survey_json.Domain.Entities;
 
 
-import java.time.LocalDateTime;
 
+
+import org.hibernate.annotations.Type;
 
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
-import com.projecto.project.Survey.Domain.Entities.Survey;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -13,8 +13,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,8 +27,8 @@ public class SurveyJson {
     @Column(name = "html" , columnDefinition = "text")
     private String html;
 
-
-    @Column(name = "jsonSurvey" , columnDefinition = "jsonb")
+    
+    @Column(name = "jsonSurvey" , columnDefinition = "text")
     private String json;
 
     
@@ -54,13 +52,23 @@ public class SurveyJson {
     }
 
 
-    public String getJson() {
+    public String getHtml() {
         return html;
     }
 
-    public void setJson(String html) {
+    public void setHtml(String html) {
         this.html = html;
     }
+
+    public String getJson() {
+        return json;
+    }
+
+    public void setJson(String json) {
+        this.json = json;
+    }
+
+
 
     
 }
