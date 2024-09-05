@@ -2,6 +2,7 @@ package com.projecto.project.Chapter.Domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.projecto.project.Embeddable.CreatedUpdatedTime;
 import com.projecto.project.Questions.Domain.Question;
 import com.projecto.project.Survey.Domain.Entities.Survey;
@@ -10,6 +11,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,11 +29,12 @@ public class Chapter {
     @Embedded
     private CreatedUpdatedTime createdUpdatedTime;  
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "survey_id", nullable = false )
+    @JsonIgnore
     private Survey survey;
 
-    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Question> questions;
 
 /*     @Column(columnDefinition = "varchar(50)", nullable = false , name = "chapter_number")

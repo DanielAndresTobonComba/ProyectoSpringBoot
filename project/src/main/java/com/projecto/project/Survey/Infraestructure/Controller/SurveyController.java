@@ -1,6 +1,8 @@
 package com.projecto.project.Survey.Infraestructure.Controller;
 
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projecto.project.Response_Options.Domain.ResponseOptions;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import com.projecto.project.Survey.Domain.Service.ISurvey;
 
@@ -121,6 +124,12 @@ public class SurveyController {
     }
     
 
+/*     // http://localhost:8090/survey/details{id}
+
+    @GetMapping("/{id}")
+    public Survey getSurvey(@PathVariable Long id) {
+        return servicio.getSurveyWithDetails(id);
+    } */
 
 
 }

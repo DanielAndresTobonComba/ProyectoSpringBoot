@@ -13,6 +13,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,14 +37,6 @@ public class Survey {
     @Column(columnDefinition = "text")
     private String reference_html;
 
-    @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Chapter> chapters; 
-
-    @ManyToOne
-    @JoinColumn(name = "survey_category", nullable = false )
-    private SurveyCategory survey_category;
-
-
     @Column(name = "name" , columnDefinition = "varchar(255)" , nullable = true)
     private String name;
 
@@ -52,6 +45,17 @@ public class Survey {
 
     @Embedded
     private CreatedUpdatedTime createdUpdatedTime; 
+
+    
+    @ManyToOne
+    @JoinColumn(name = "survey_category", nullable = false )
+    private SurveyCategory survey_category;
+
+    @OneToMany(mappedBy = "survey", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
+    private List<Chapter> chapters; 
+
+
+
 
     public Survey() {
         this.createdUpdatedTime = new CreatedUpdatedTime();
