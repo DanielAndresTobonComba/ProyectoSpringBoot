@@ -20,7 +20,12 @@ public interface SurveyRepository extends JpaRepository <Survey , Long> {
 /*     @Query("SELECT s FROM Survey s LEFT JOIN FETCH s.chapters c LEFT JOIN FETCH c.questions q LEFT JOIN FETCH q.responseOptions WHERE s.id = :id")
     Survey findSurveyByIdWithDetails(@Param("id") Long id); */
 
-    
+    /* SELECT *
+FROM response_options ro
+JOIN question q ON ro.question_id = q.id
+JOIN chapter ch ON q.chapter_id = ch.id
+JOIN surveys s ON ch.survey_id = s.id
+WHERE s.id = 28;  */
 
 
 }
