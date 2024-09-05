@@ -35,6 +35,15 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "varchar(10)", nullable = true)
+    private String question_number; 
+
+    @Column(columnDefinition = "varchar(50)", nullable = true)
+    private String response_type;
+
+    @Column(columnDefinition = "text")
+    private String reference_html;
+
     @Embedded
     private CreatedUpdatedTime createdUpdatedTime;
 
@@ -46,14 +55,7 @@ public class Question {
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true , fetch = FetchType.EAGER)
     private List<ResponseOptions> response_options;
 
-   @Column(columnDefinition = "varchar(10)", nullable = true)
-    private String question_number; 
 
-    @Column(columnDefinition = "varchar(50)", nullable = true)
-    private String response_type;
-
-    @Column(columnDefinition = "text")
-    private String reference_html;
 
 /*     @Column(columnDefinition = "varchar(50)" , nullable = false)
     private String  comment_question; */

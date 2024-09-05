@@ -27,7 +27,7 @@ function fetchSurveyById(id) {
 }
 
 // Ejemplo de uso:
-fetchSurveyById(15);
+fetchSurveyById(2);
 
 
 // peticion post 
