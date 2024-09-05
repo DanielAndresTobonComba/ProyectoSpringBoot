@@ -220,12 +220,17 @@ function changeTypeOption(idDiv, idSelector) {
 
         } else if(selectorChanged.value === optionsList[0] && tagNameOption === "TEXTAREA") {
             
+            let idDivToChange =divContentQuestionElement.children.item(1).id;
             divContentQuestionElement.children.item(1).innerHTML = `<input type="radio" id="${idFinalPart}-1-unique" class="option-marked p-2 form-check-input border border-primary" name="${idFinalPart}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${idFinalPart}-1" value=""><button type="button" id="close-${idFinalPart}-1" class="close btn-close close-button" aria-label="Close"></button>`;;
+            document.getElementById(`close-${idFinalPart}-1`).setAttribute("onclick", `removeElement("${idDivToChange}")`); 
+
+
 
         } else if(selectorChanged.value === optionsList[1] && tagNameOption === "TEXTAREA") {
 
+            let idDivToChange =divContentQuestionElement.children.item(1).id;
             divContentQuestionElement.children.item(1).innerHTML = `<input type="checkbox" id="${idFinalPart}-1-several" class="option-marked p-2 form-check-input border border-primary" name="${idFinalPart}-1" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${idFinalPart}-1" value=""><button type="button" id="close-${idFinalPart}-1" class="close btn-close close-button" aria-label="Close"></button>`;
-
+            document.getElementById(`close-${idFinalPart}-1`).setAttribute("onclick", `removeElement("${idDivToChange}")`); 
         }
         
         else {
