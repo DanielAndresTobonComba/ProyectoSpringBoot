@@ -27,26 +27,6 @@ public class Chapter {
     @Embedded
     private CreatedUpdatedTime createdUpdatedTime;  
 
-    public Chapter() {
-        
-    }
-
-/*     @Column(nullable = true) 
-    private LocalDateTime createdAt;
-
-    @Column(nullable = true)
-    private LocalDateTime updatedAt; */
-
-/*     @PrePersist
-    public void prePersistAudit() {
-        createdAt = LocalDateTime.now();
-    }
-
-    @PreUpdate
-    public void preUpdateAudit() {
-        updatedAt = LocalDateTime.now();
-    } */
-
     @ManyToOne
     @JoinColumn(name = "survey_id", nullable = false )
     private Survey survey;
@@ -58,8 +38,38 @@ public class Chapter {
     private String chapterNumber; */
 
     @Column(columnDefinition = "varchar(50)", nullable = false, name = "chapter_title")
-    private String chapterTitle;
+    private String chapter_title;
 
+    @Column(columnDefinition = "text")
+    private String reference_html;
+
+    public Chapter() {
+        
+    }
+
+    public CreatedUpdatedTime getCreatedUpdatedTime() {
+        return createdUpdatedTime;
+    }
+
+    public void setCreatedUpdatedTime(CreatedUpdatedTime createdUpdatedTime) {
+        this.createdUpdatedTime = createdUpdatedTime;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public String getReference_html() {
+        return reference_html;
+    }
+
+    public void setReference_html(String reference_html) {
+        this.reference_html = reference_html;
+    }
 
     public Long getId() {
         return id;
@@ -69,6 +79,15 @@ public class Chapter {
         this.id = id;
     }
 
+
+
+    public String getChapter_title() {
+        return chapter_title;
+    }
+
+    public void setChapter_title(String chapter_title) {
+        this.chapter_title = chapter_title;
+    }
 
     public Survey getSurvey() {
         return survey;
@@ -80,13 +99,8 @@ public class Chapter {
 
 
 
-    public String getChapterTitle() {
-        return chapterTitle;
-    }
 
-    public void setChapterTitle(String chapterTitle) {
-        this.chapterTitle = chapterTitle;
-    }
+
 
 
     

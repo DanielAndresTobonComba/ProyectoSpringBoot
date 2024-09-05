@@ -29,19 +29,21 @@ public class ResponseOptions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
-    private String optionValue;
+/*     @Column(columnDefinition = "varchar(10)", nullable = false)
+    private String optionValue;  */
 
     @Embedded
     CreatedUpdatedTime createdUpdatedTime;
 
-
     @ManyToOne
     @JoinColumn(name = "question_id", nullable = false)
-    private Question questions;
+    private Question question;
 
     @Column(columnDefinition = "text", nullable = false)
     private String response;
+
+    @Column(columnDefinition = "text")
+    private String reference_html;
 
 /*     @Column(columnDefinition = "varchar(30)", nullable = false)
     private String typeComponentHtml; */

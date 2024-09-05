@@ -77,12 +77,17 @@ public class SurveyController {
 
     // http://localhost:8090/survey/createSurvey
 
-    /* 		{   
-			
-			"name": "Prueba de fuego",
-			"description": "Descripcion de prueba de fuego"
+    /* 		{
+ 
+  "reference_html": "<p>Referencia a la encuesta</p>",
 
-		} */
+  "survey_category": {
+    "id": 1
+  },
+  "name": "Encuesta de Satisfacción",
+  "description": "Encuesta para medir la satisfacción del cliente"
+
+}} */
 
     @PostMapping("/createSurvey")
     public  Survey createOne(@RequestBody Survey survey) {
@@ -101,12 +106,21 @@ public class SurveyController {
 
 		}  */
 
+
+
+        /* {
+
+}
+ */
+
     @PutMapping("/updateSurvey/{id}") 
         public  Optional <Survey> updateOne (@PathVariable Long id , @RequestBody Survey survey) {
 
             return servicio.update(id, survey);
 
-        }
+    }
     
+
+
 
 }

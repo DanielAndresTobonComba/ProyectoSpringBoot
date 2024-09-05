@@ -32,33 +32,22 @@ public class QuestionsControllers {
     @Autowired
     IQuestions servicIQuestions;
 
-/*     @GetMapping("{id}/")
-    
-    public ResponseEntity<Question> findById(@PathVariable long id) {
-
-        Optional<Question> question = iQuestions.findById(id); 
-
-        if (question.isPresent()) {
-            return ResponseEntity.ok(question.orElseThrow());
-        }
-
-        return ResponseEntity.notFound().build();
-    } */
-
     // http://localhost:8090/question/createOne
-        /* {
+        /* 
 
 {
     "chapter": {
-        "id": 20
+        "id": 1
     },
-    "question_number": "Q1",
+    
     "response_type": "Multiple Choice",
-    "comment_question": "What is your favorite color?"
+    "question_number":"q1",
+    "reference_html": "<p>Referencia a la encuesta</p>"
 }
-	
-} */
 
+
+	
+ */
 
     @PostMapping("/createOne")
     public  Question createOne(@RequestBody Question question) {

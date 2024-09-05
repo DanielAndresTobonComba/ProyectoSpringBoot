@@ -30,15 +30,18 @@ public class Question {
     @Embedded
     private CreatedUpdatedTime createdUpdatedTime;
 
-    @ManyToOne ()
-    @JoinColumn (name = "chapter_id", nullable = false)
+    @ManyToOne
+    @JoinColumn (name = "chapter_id")
     private Chapter chapter;
 
-    @Column(columnDefinition = "varchar(10)", nullable = false)
-    private String question_number;
+   @Column(columnDefinition = "varchar(10)", nullable = true)
+    private String question_number; 
 
     @Column(columnDefinition = "varchar(50)", nullable = true)
     private String response_type;
+
+    @Column(columnDefinition = "text")
+    private String reference_html;
 
 /*     @Column(columnDefinition = "varchar(50)" , nullable = false)
     private String  comment_question; */

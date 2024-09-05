@@ -24,8 +24,9 @@ public class SurveyCategoryController {
     @Autowired
     ISurveyCategory categoryServices;
 
+   // http://localhost:8090/api/categories/getCategories
     
-    @GetMapping
+    @GetMapping("/getCategories")
     public List<String> getCategories() {
         List<SurveyCategory> listCategories = categoryServices.extractCategories();
         List<String> names = new ArrayList<>();
@@ -41,7 +42,11 @@ public class SurveyCategoryController {
     @Autowired 
     private ISurveyCategory serviciCatalog;
 
-    // http://localhost:8090/catalog/createOne
+        /* {
+
+  "name": "deportes"
+} */
+    // http://localhost:8090/api/categories/createOne
 
     @PostMapping("/createOne")
     public SurveyCategory createOne(@RequestBody SurveyCategory surveyCategory) {
