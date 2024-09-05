@@ -26,12 +26,18 @@ public class SurveyJson {
     private long id;
 
 
-    @Column(name = "payload" , columnDefinition = "text")
+    @Column(name = "html" , columnDefinition = "text")
+    private String html;
+
+
+    @Column(name = "jsonSurvey" , columnDefinition = "jsonb")
     private String json;
 
-    @ManyToOne
-    @JoinColumn(name = "survey_id")
-    private Survey survey; 
+    
+
+    // @ManyToOne
+    // @JoinColumn(name = "survey_id")
+    // private Survey survey; 
 
     @Embedded 
     private CreatedUpdatedTime createdUpdatedTime;
@@ -49,11 +55,11 @@ public class SurveyJson {
 
 
     public String getJson() {
-        return json;
+        return html;
     }
 
-    public void setJson(String json) {
-        this.json = json;
+    public void setJson(String html) {
+        this.html = html;
     }
 
     
