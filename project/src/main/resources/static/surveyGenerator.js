@@ -3,6 +3,12 @@ let jsonList;
 let optionsList = ["Única Respuesta", "Respuesta Múltiple", "Respuesta Abierta"];
 
 document.body.setAttribute("onload", "onLoadCreate()");
+document.getElementById("categories").setAttribute("onchange", "putCategory()");
+
+function putCategory() {
+    let inputTextcategory = document.getElementById("text-category");
+    inputTextcategory.value = document.getElementById("categories").value;
+}
 
 
 function onLoadCreate() {
@@ -182,6 +188,8 @@ function addNewOption() {
 }
 
 
+
+
 function createChapter() {
     let divContent = document.getElementById("content");
     let numChildren = divContent.children.length;
@@ -193,7 +201,7 @@ function createChapter() {
     newDiv.classList.add("section");
     newDiv.classList.add("w-100");
     newDiv.classList.add("shadow", "p-3", "mb-5", "bg-body-tertiary", "rounded", "gap-3");
-    newDiv.innerHTML=`<button type="button" id="close-${idNewDiv}" class="close btn-close close-button" aria-label="Close"></button><div id = 'content-${idNewDiv}' class = 'centrado w-75'><input id = 'header-chapter-${numChildren}' type='text' class = 'section-${numChildren} p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} btn btn-outline-warning ' onclick='createQuestion()'>Nueva pregunta</button>`;
+    newDiv.innerHTML=`<button type="button" id="close-${idNewDiv}" class="close btn-close close-button" aria-label="Close"></button><div id = 'content-${idNewDiv}' class = 'centrado w-75'><input id = 'header-chapter-${numChildren}' type='text' class = 'section-${numChildren} p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100 text-center' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} btn btn-outline-warning ' onclick='createQuestion()'>Nueva pregunta</button>`;
     divContent.appendChild(newDiv);
     let closeSectionButton = document.getElementById(`close-${idNewDiv}`);
     closeSectionButton.setAttribute("onclick", `removeElement("${idNewDiv}")`);
