@@ -26,6 +26,12 @@ public class Chapter {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(columnDefinition = "varchar(50)", nullable = false, name = "chapter_title")
+    private String chapter_title;
+
+    @Column(columnDefinition = "text")
+    private String reference_html;
+
     @Embedded
     private CreatedUpdatedTime createdUpdatedTime;  
 
@@ -39,13 +45,6 @@ public class Chapter {
 
 /*     @Column(columnDefinition = "varchar(50)", nullable = false , name = "chapter_number")
     private String chapterNumber; */
-
-    @Column(columnDefinition = "varchar(50)", nullable = false, name = "chapter_title")
-    private String chapter_title;
-
-    @Column(columnDefinition = "text")
-    private String reference_html;
-
     public Chapter() {
         
     }
