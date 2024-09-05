@@ -56,6 +56,7 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .requestMatchers("/static/**").permitAll()
                 .requestMatchers("/api/categories").permitAll()
                 .requestMatchers("/api/users").permitAll()
+                .requestMatchers("/survey_category/**").permitAll()
                 .requestMatchers("/survey/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/survey").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/survey").permitAll()
@@ -68,6 +69,7 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .requestMatchers("/catalog/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users/verify").permitAll()
+                .requestMatchers("/responseOptions/**").permitAll()
 
                 .anyRequest().authenticated())
                 
@@ -75,8 +77,8 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 // .loginPage("/index").permitAll())
                 .csrf(config -> config.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .formLogin(form -> form
-                    .loginPage("/index").permitAll())   
+/*                 .formLogin(form -> form
+                    .loginPage("/index").permitAll())  */  
                 .build();
 
     }

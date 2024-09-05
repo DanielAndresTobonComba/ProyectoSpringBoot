@@ -1,6 +1,8 @@
 package com.projecto.project.Survey.Infraestructure.Controller;
 
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projecto.project.Response_Options.Domain.ResponseOptions;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import com.projecto.project.Survey.Domain.Service.ISurvey;
 
@@ -77,12 +80,17 @@ public class SurveyController {
 
     // http://localhost:8090/survey/createSurvey
 
-    /* 		{   
-			
-			"name": "Prueba de fuego",
-			"description": "Descripcion de prueba de fuego"
+    /* 		{
+ 
+  "reference_html": "<p>Referencia a la encuesta</p>",
 
-		} */
+  "survey_category": {
+    "id": 1
+  },
+  "name": "Encuesta de Satisfacción",
+  "description": "Encuesta para medir la satisfacción del cliente"
+
+}} */
 
     @PostMapping("/createSurvey")
     public  Survey createOne(@RequestBody Survey survey) {
@@ -101,12 +109,27 @@ public class SurveyController {
 
 		}  */
 
+
+
+        /* {
+
+}
+ */
+
     @PutMapping("/updateSurvey/{id}") 
         public  Optional <Survey> updateOne (@PathVariable Long id , @RequestBody Survey survey) {
 
             return servicio.update(id, survey);
 
-        }
+    }
     
+
+/*     // http://localhost:8090/survey/details{id}
+
+    @GetMapping("/{id}")
+    public Survey getSurvey(@PathVariable Long id) {
+        return servicio.getSurveyWithDetails(id);
+    } */
+
 
 }

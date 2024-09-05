@@ -1,5 +1,9 @@
 package com.projecto.project.Survey.Application;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.projecto.project.Response_Options.Domain.ResponseOptions;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import com.projecto.project.Survey.Domain.Service.ISurvey;
 import com.projecto.project.Survey.Infraestructure.Repository.SurveyRepository;
@@ -70,4 +75,17 @@ public class SurveyServiceImpl implements ISurvey {
         return surveyRepository.save(survey);
     }
 
-}
+/*     @Override
+    public Survey getSurveyWithDetails(Long id) {
+        return surveyRepository.findSurveyByIdWithDetails(id);
+    } */
+
+
+    }
+
+
+
+
+
+
+
