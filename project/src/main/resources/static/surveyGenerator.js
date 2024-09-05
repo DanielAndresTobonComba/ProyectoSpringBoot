@@ -56,6 +56,7 @@ function createQuestion() {
             let idNewTextQuestion = "text-question-";
             let idNewSelectOptionType = "select-question-";
             let idNewResponseOption = "option-question-";
+            let idCloseQuestion="close-question-"
             let secondPartIdContent = className.split(" ")[2];
             let idContentSection = firtPartIdContent.concat(secondPartIdContent)
             let divIdContentSection = document.getElementById(idContentSection);
@@ -67,11 +68,12 @@ function createQuestion() {
             idNewTextQuestion = idNewTextQuestion + extenderId;
             idNewSelectOptionType = idNewSelectOptionType  + extenderId;
             idNewResponseOption = idNewResponseOption + extenderId;
+            idCloseQuestion = idCloseQuestion + extenderId;
             console.log(idNewQuestionContent);
             let newQuestionContent = document.createElement("div");
             newQuestionContent.id= idNewQuestionContent;
             newQuestionContent.className="w-100";
-            newQuestionContent.innerHTML= `<div id="${idNewHeaderQuestion}" class="d-flex justify-content-between centrado-vertical header-question"><input class="question ${idNewTextQuestion} w-50 border border-0 border-bottom p-2 rounded"><button id="${idNewResponseOption}" type="button" class="btn btn-outline-success">Añadir Opción</button><select id = "${idNewSelectOptionType}" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded" aria-label="Default select example"></select><button type="button" class="btn-close close-button" aria-label="Close"></button></div>`;
+            newQuestionContent.innerHTML= `<div id="${idNewHeaderQuestion}" class="d-flex justify-content-between centrado-vertical header-question"><input class="question ${idNewTextQuestion} w-50 border border-0 border-bottom p-2 rounded bg-warning-subtle"><button id="${idNewResponseOption}" type="button" class="btn btn-outline-success">Añadir Opción</button><select id = "${idNewSelectOptionType}" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded" aria-label="Default select example"></select><button type="button" id="${idCloseQuestion}" class="close btn-close close-button" aria-label="Close"></button></div>`;
             
             divIdContentSection.appendChild(newQuestionContent);
 
@@ -92,7 +94,7 @@ function createQuestion() {
                 selectelement.appendChild(newResponseOption);
                 
                 let selectElement = document.getElementById(idNewSelectOptionType);
-                selectElement.setAttribute("onchange", "changeTypeOption()")
+                selectElement.setAttribute("onchange", `changeTypeOption("${idNewQuestionContent}", "${idNewSelectOptionType}")`)
             })
         }
         
@@ -116,29 +118,33 @@ function addNewOption() {
             let numCreatedOptions = lengthDivContentQuestionChildren - 1;
             let newDivOption = document.createElement("div");
             let idNewDivOption = "divOption-" + `${numCreatedOptions++}-` + finalPartId;
-            newDivOption.classList.add("d-flex", "justify-content-start", "gap-3", "w-100", "centrado-vertical");
+            let idCloseButton = "close-" + `${finalPartId}-${++numCreatedOptions}`
+            newDivOption.classList.add("d-flex", "justify-content-start", "gap-3", "w-100", "centrado-vertical", "p-2");
             newDivOption.id = idNewDivOption;
             if (lengthDivContentQuestionChildren == 1) {
                 let idSelectParent = "select-" + finalPartId;
+                
                 let selectParent = document.getElementById(idSelectParent);
                 let selectOptionResponseValue = selectParent.value;
                 
                 if (selectOptionResponseValue === "Única Respuesta") {
                     
-                    newDivOption.innerHTML = `<input type="radio" id="${finalPartId}-${numCreatedOptions++}-unique" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2" id="text-${finalPartId}-${numCreatedOptions++}" value="">`;
+                    newDivOption.innerHTML = `<input type="radio" id="${finalPartId}-${++numCreatedOptions}-unique" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="close-${finalPartId}-1" class="close btn-close close-button" aria-label="Close"></button>`;
                     
                 } else if (selectOptionResponseValue === "Respuesta Múltiple") {
 
-                    newDivOption.innerHTML = `<input type="checkbox" id="${finalPartId}-${numCreatedOptions++}-several" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}-${numCreatedOptions++}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2" id="text-${finalPartId}-${numCreatedOptions++}" value="">`;
+                    newDivOption.innerHTML = `<input type="checkbox" id="${finalPartId}-${++numCreatedOptions}-several" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}-${++numCreatedOptions}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="close-${finalPartId}-1" class="close btn-close close-button" aria-label="Close"></button>`;
 
                 } else if (selectOptionResponseValue === "Respuesta Abierta") {
 
-                    newDivOption.innerHTML = `<textarea id="${finalPartId}-text" name="${finalPartId}" rows="3" cols="60" class="rounded p-2 border border-0"></textarea>`;
+                    newDivOption.innerHTML = `<textarea id="${finalPartId}-text" name="${finalPartId}" rows="3" cols="60" class="rounded p-2 border border-0 bg-success-subtle"></textarea>`;
 
                 }
 
 
                 divContentQuestion.appendChild(newDivOption);
+
+                document.getElementById(`close-${finalPartId}-1`).setAttribute("onclick", `removeElement("${idNewDivOption}")`);
 
                 
             } else {
@@ -149,15 +155,16 @@ function addNewOption() {
 
                     if (lastPartIdFirstResponseOptionInto === "unique") {
 
-                        newDivOption.innerHTML = `<input type="radio" id="${finalPartId}-${numCreatedOptions++}-unique" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2" id="text-${finalPartId}-${numCreatedOptions++}" value="">`;
+                        newDivOption.innerHTML = `<input type="radio" id="${finalPartId}-${++numCreatedOptions}-unique" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="${idCloseButton}" class="close btn-close close-button" aria-label="Close"></button>`;
 
                     } else {
 
-                        newDivOption.innerHTML = `<input type="checkbox" id="${finalPartId}-${numCreatedOptions++}-several" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}-${numCreatedOptions++}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2" id="text-${finalPartId}-${numCreatedOptions++}" value="">`;
+                        newDivOption.innerHTML = `<input type="checkbox" id="${finalPartId}-${++numCreatedOptions}-several" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}-${++numCreatedOptions}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="${idCloseButton}" class="close btn-close close-button" aria-label="Close"></button>`;
 
                     }
 
                     divContentQuestion.appendChild(newDivOption);
+                    document.getElementById(`${idCloseButton}`).setAttribute("onclick", `removeElement("${idNewDivOption}")`)
 
                 }
 
@@ -186,34 +193,114 @@ function createChapter() {
     
 }
 
-function changeTypeOption() {
-    let count = 1;
-    const myCustomListener = function(e) {
+function changeTypeOption(idDiv, idSelector) {
+    
+    
+    let idFinalPart = idDiv.replace("content-", "");
+    let divContentQuestionElement = document.getElementById(idDiv);
+    let selectorChanged = document.getElementById(idSelector);
+    let typeOption;
+    let numQuestionOptions = divContentQuestionElement.children.length -1;
+    if (numQuestionOptions == 1) {
+        let tagNameOption = divContentQuestionElement.children.item(1).children.item(0).tagName;
+        let idElementToChangeType = divContentQuestionElement.children.item(1).children.item(0).id;
+        if (selectorChanged.value === optionsList[0] && tagNameOption != "TEXTAREA") {
 
-        let finalPartId = e.target.id.replace("select-", "");
-        let idSelectTypeOptionChanged = e.target.id;
-        let selectChangedElement = document.getElementById(idSelectTypeOptionChanged); 
-        let divContentQuestionId = "content-" + finalPartId;
-        let divContentQuestion = document.getElementById(divContentQuestionId);
-        //console.log(divContentQuestion.children.length);
+            typeOption = "radio";
+            divContentQuestionElement.children.item(1).children.item(0).id = idElementToChangeType.replace("several", "unique");
+            divContentQuestionElement.children.item(1).children.item(0).name = idFinalPart;
+            divContentQuestionElement.children.item(1).children.item(0).type = typeOption;
+
+        }  else if (selectorChanged.value === optionsList[1] && tagNameOption != "TEXTAREA") {
+
+            typeOption = "checkbox";
+            divContentQuestionElement.children.item(1).children.item(0).id = idElementToChangeType.replace("unique", "several");
+            divContentQuestionElement.children.item(1).children.item(0).name = idFinalPart + "-1";
+            divContentQuestionElement.children.item(1).children.item(0).type = typeOption;
+
+        } else if(selectorChanged.value === optionsList[0] && tagNameOption === "TEXTAREA") {
+            
+            let idDivToChange =divContentQuestionElement.children.item(1).id;
+            divContentQuestionElement.children.item(1).innerHTML = `<input type="radio" id="${idFinalPart}-1-unique" class="option-marked p-2 form-check-input border border-primary" name="${idFinalPart}" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${idFinalPart}-1" value=""><button type="button" id="close-${idFinalPart}-1" class="close btn-close close-button" aria-label="Close"></button>`;;
+            document.getElementById(`close-${idFinalPart}-1`).setAttribute("onclick", `removeElement("${idDivToChange}")`); 
+
+
+
+        } else if(selectorChanged.value === optionsList[1] && tagNameOption === "TEXTAREA") {
+
+            let idDivToChange =divContentQuestionElement.children.item(1).id;
+            divContentQuestionElement.children.item(1).innerHTML = `<input type="checkbox" id="${idFinalPart}-1-several" class="option-marked p-2 form-check-input border border-primary" name="${idFinalPart}-1" value=""><input type="text" class="border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${idFinalPart}-1" value=""><button type="button" id="close-${idFinalPart}-1" class="close btn-close close-button" aria-label="Close"></button>`;
+            document.getElementById(`close-${idFinalPart}-1`).setAttribute("onclick", `removeElement("${idDivToChange}")`); 
+        }
         
-        // let listObjectIntoDivContentQuestion = divContentQuestion.children;
-        // console.log(listObjectIntoDivContentQuestion);
+        else {
 
-        if (selectChangedElement.value === "Única Respuesta") {
+            divContentQuestionElement.children.item(1).innerHTML = `<textarea id="${idFinalPart}-text" name="${idFinalPart}" rows="3" cols="60" class="rounded p-2 border border-0 bg-success-subtle"></textarea>`;
 
-            // for (div in listObjectIntoDivContentQuestion) {
-            //     console.log(div);
-            // }
+        }
+
+        
+                  
+    } else if (numQuestionOptions > 1) {
+
+        if (selectorChanged.value === optionsList[0]) {
+
+            typeOption = "radio";
+            
+            for (let i = 1; i <= numQuestionOptions; i++) {
+                
+                let idElementToChangeType = divContentQuestionElement.children.item(i).children.item(0).id;
+                divContentQuestionElement.children.item(i).children.item(0).id = idElementToChangeType.replace("several", "unique");
+                divContentQuestionElement.children.item(i).children.item(0).name = idFinalPart;
+                divContentQuestionElement.children.item(i).children.item(0).type = typeOption;
+
+            }
+            
+
+        } else if(selectorChanged.value === optionsList[1]) {
+
+            typeOption = "checkbox";
+            
+            for (let j= 1; j<=numQuestionOptions; j++) {
+
+                let idElementToChangeType = divContentQuestionElement.children.item(j).children.item(0).id;
+                divContentQuestionElement.children.item(j).children.item(0).id = idElementToChangeType.replace("unique", "several");
+                divContentQuestionElement.children.item(j).children.item(0).name= idFinalPart + `-${j}`;
+                divContentQuestionElement.children.item(j).children.item(0).type = typeOption;
+
+            }
+
+        } else if(selectorChanged.value === optionsList[2]) {
+
+
+            for (let k = 1; k <= numQuestionOptions; k++) {
+
+                if (k === 1) {
+
+                    divContentQuestionElement.children.item(1).innerHTML = `<textarea id="${idFinalPart}-text" name="${idFinalPart}" rows="3" cols="60" class="rounded p-2 border border-0 bg-success-subtle"></textarea>`;
+
+                } else {
+
+                    divContentQuestionElement.children.item(2).remove();
+
+                }
+
+
+            }
 
         }
 
     }
+    
+}
 
-    document.body.addEventListener("click", myCustomListener);  
+function removeElement(idElementToEliminate) { 
 
+    let divToRemove = document.getElementById(idElementToEliminate);
+    divToRemove.remove(); 
 
 }
+
 
 function sendHTML() {
     let htmlSurveyRow = document.body.innerHTML.split("<script")[0];
