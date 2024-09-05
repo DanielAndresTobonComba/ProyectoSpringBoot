@@ -26,7 +26,6 @@ function onLoadCreate() {
         .then(response => response.json())
         .then(json => {
             jsonList = json;
-            console.log(json);
             const category_select = document.getElementById("categories");
             json.forEach(element => {
                 let option_element = document.createElement("option");
@@ -80,9 +79,14 @@ function createQuestion() {
 
 
             let addOptionButton = document.getElementById(idNewResponseOption);
+            let closeQuestionButton = document.getElementById(idCloseQuestion);
+
+            closeQuestionButton.setAttribute("onclick", `removeElement("${idNewQuestionContent}")`)
             addOptionButton.setAttribute("onclick", "addNewOption()");
+
             let selectelement = document.getElementById(idNewSelectOptionType);
             let countOption = 0;
+
             optionsList.forEach( option => {
                 countOption++;
                 let newResponseOption = document.createElement("option");
@@ -188,9 +192,11 @@ function createChapter() {
     newDiv.classList.add("p-3");
     newDiv.classList.add("section");
     newDiv.classList.add("w-100");
-    newDiv.classList.add("shadow", "p-3", "mb-5", "bg-body-tertiary", "rounded");
-    newDiv.innerHTML=`<div id = 'content-${idNewDiv}' class = 'centrado w-75'><input id = 'header-chapter-${numChildren}' type='text' class = 'section-${numChildren} p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} btn btn-outline-warning ' onclick='createQuestion()'>Nueva pregunta</button>`;
+    newDiv.classList.add("shadow", "p-3", "mb-5", "bg-body-tertiary", "rounded", "gap-3");
+    newDiv.innerHTML=`<button type="button" id="close-${idNewDiv}" class="close btn-close close-button" aria-label="Close"></button><div id = 'content-${idNewDiv}' class = 'centrado w-75'><input id = 'header-chapter-${numChildren}' type='text' class = 'section-${numChildren} p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} btn btn-outline-warning ' onclick='createQuestion()'>Nueva pregunta</button>`;
     divContent.appendChild(newDiv);
+    let closeSectionButton = document.getElementById(`close-${idNewDiv}`);
+    closeSectionButton.setAttribute("onclick", `removeElement("${idNewDiv}")`);
     
 }
 
