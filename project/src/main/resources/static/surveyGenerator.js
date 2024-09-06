@@ -349,7 +349,15 @@ function sendHTML() {
         },
         })
         .then(response => response.json())
-        .then(json => console.log(json))
+        .then(json => {
+
+            console.log(json)
+
+            alert(`Se ha creado la encuesta con código ${json.id} exitosamente!`);
+
+            location.href = "http://localhost:8090/admin";
+
+        } )
         .catch(error => console.error("ERROR!!!:" + error))
 
     }
