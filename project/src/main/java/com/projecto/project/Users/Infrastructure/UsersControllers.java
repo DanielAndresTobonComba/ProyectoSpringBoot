@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "*")
 public class UsersControllers {
 
     @Autowired
@@ -76,7 +78,18 @@ public class UsersControllers {
             return "Usuario NO registrado";
         } else {
             if (userLogIn.get(0).getPassword().equals(new Sha256Hash(users.getPassword(), "f1nd1ngn3m0", 1024).toBase64())) {
-                return "Verificado";
+                if(userLogIn.get(0).getRoles().size() == 2) {
+
+                    return "Admin";
+
+                } else if (userLogIn.get(0).getRoles().size() == 1){
+
+                    return "User";
+
+                } else {
+                    return "Incorrecto";
+                }
+                
             } else {
                  
                 return "Contraseña incorrecta";

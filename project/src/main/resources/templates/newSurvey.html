@@ -90,13 +90,15 @@
 
             transition: box-shadow 0.3s;
         }
+
+        
     </style>
 </head>
 
 <body class="p-5">
     <div id="surveyInfo" class="mb-3 w-50 text-center">
         <label for="exampleFormControlInput1" class="form-label">Nombre de la encuesta</label>
-        <input type="text" class="view form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded" id="head"
+        <input type="text" class="view form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded text-center fs-3 text" id="head"
             placeholder="Título de la encuesta">
     </div>
 
@@ -106,7 +108,7 @@
     </div>
 
 
-    <div class="centrado w-100">
+    <div class="admin centrado w-100">
         <label for="categories">Seleccionar categoria</label>
         <select id="categories" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded"
             aria-label="Default select example">
@@ -127,13 +129,13 @@
 
     </div>
 
-    <div id="new-buttons">
+    <div id="new-buttons" class="admin">
         <button onclick="createChapter()" class="btn btn-primary btn-lg">Nuevo cap</button>
 
     </div>
 
 
-    <button id="regist-button" class="btn btn-outline-success">Registrar Encuesta</button>
+    <button id="regist-button" class="admin btn btn-outline-success">Registrar Encuesta</button>
 
 
 
@@ -145,41 +147,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-    <!--<script>
-        alert("entre a mis funciones")
-
-        function fetchSurveyById(id) {
-    const url = `http://localhost:8090/survey/findOne/${id}`;
-
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-        .then(response => {
-            if (!response.ok) {
-                return response.text().then(text => {
-                    throw new Error(`HTTP error! Status: ${response.status}, Message: ${text}`);
-                });
-            }
-            return response.text();  // Cambiado a `response.text()` para manejar respuestas de texto
-        })
-        .then(data => {
-            console.log("Datos recibidos:", data);  // Aquí puedes manejar el string recibido
-            const obj = JSON.parse(data);
-            console.log(obj);
-        })
-        .catch(error => {
-            console.error("Error al buscar los datos:", error);
-            console.log("Error al buscar los datos.");  // Notifica al usuario en caso de error
-        });
-}
-
-// Ejemplo de uso:
-fetchSurveyById(1);
-
-    </script>-->
+    
 </body>
 
 </html>

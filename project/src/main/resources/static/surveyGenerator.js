@@ -79,7 +79,8 @@ function createQuestion() {
             let newQuestionContent = document.createElement("div");
             newQuestionContent.id= idNewQuestionContent;
             newQuestionContent.className="w-100";
-            newQuestionContent.innerHTML= `<div id="${idNewHeaderQuestion}" class="d-flex justify-content-between centrado-vertical header-question"><input id="${idNewTextQuestion}" class="view question w-50 border border-0 border-bottom p-2 rounded bg-warning-subtle"><button id="${idNewResponseOption}" type="button" class="btn btn-outline-success">Añadir Opción</button><select id = "${idNewSelectOptionType}" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded" aria-label="Default select example"></select><button type="button" id="${idCloseQuestion}" class="close btn-close close-button" aria-label="Close"></button></div>`;
+            newQuestionContent.classList.add("p-1");
+            newQuestionContent.innerHTML= `<div id="${idNewHeaderQuestion}" class="d-flex justify-content-between centrado-vertical header-question"><input id="${idNewTextQuestion}" class="view question w-50 border border-0 border-bottom p-2 rounded bg-warning-subtle"><button id="${idNewResponseOption}" type="button" class="admin btn btn-outline-success">Añadir Opción</button><select id = "${idNewSelectOptionType}" class="admin form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded" aria-label="Default select example"></select><button type="button" id="${idCloseQuestion}" class="admin close btn-close close-button" aria-label="Close"></button></div>`;
             
             divIdContentSection.appendChild(newQuestionContent);
 
@@ -140,11 +141,11 @@ function addNewOption() {
                 
                 if (selectOptionResponseValue === "Única Respuesta") {
                     
-                    newDivOption.innerHTML = `<input type="radio" id="${finalPartId}-${++numCreatedOptions}-unique" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}" value=""><input type="text" class="view border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="close-${finalPartId}-1" class="close btn-close close-button" aria-label="Close"></button>`;
+                    newDivOption.innerHTML = `<input type="radio" id="${finalPartId}-${++numCreatedOptions}-unique" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}" value=""><input type="text" class="view border border-0 border-bottom rounded w-50 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="close-${finalPartId}-1" class="admin close btn-close close-button" aria-label="Close"></button>`;
                     
                 } else if (selectOptionResponseValue === "Respuesta Múltiple") {
 
-                    newDivOption.innerHTML = `<input type="checkbox" id="${finalPartId}-${++numCreatedOptions}-several" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}-${++numCreatedOptions}" value=""><input type="text" class="view border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="close-${finalPartId}-1" class="close btn-close close-button" aria-label="Close"></button>`;
+                    newDivOption.innerHTML = `<input type="checkbox" id="${finalPartId}-${++numCreatedOptions}-several" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}-${++numCreatedOptions}" value=""><input type="text" class="view border border-0 border-bottom rounded w-50 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="close-${finalPartId}-1" class="admin close btn-close close-button" aria-label="Close"></button>`;
 
                 } else if (selectOptionResponseValue === "Respuesta Abierta") {
 
@@ -166,11 +167,11 @@ function addNewOption() {
 
                     if (lastPartIdFirstResponseOptionInto === "unique") {
 
-                        newDivOption.innerHTML = `<input type="radio" id="${finalPartId}-${++numCreatedOptions}-unique" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}" value=""><input type="text" class="view border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="${idCloseButton}" class="close btn-close close-button" aria-label="Close"></button>`;
+                        newDivOption.innerHTML = `<input type="radio" id="${finalPartId}-${++numCreatedOptions}-unique" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}" value=""><input type="text" class="view border border-0 border-bottom rounded w-50 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="${idCloseButton}" class="admin close btn-close close-button" aria-label="Close"></button>`;
 
                     } else {
 
-                        newDivOption.innerHTML = `<input type="checkbox" id="${finalPartId}-${++numCreatedOptions}-several" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}-${++numCreatedOptions}" value=""><input type="text" class="view border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="${idCloseButton}" class="close btn-close close-button" aria-label="Close"></button>`;
+                        newDivOption.innerHTML = `<input type="checkbox" id="${finalPartId}-${++numCreatedOptions}-several" class="option-marked p-2 form-check-input border border-primary" name="${finalPartId}-${++numCreatedOptions}" value=""><input type="text" class="view border border-0 border-bottom rounded w-50 p-2 bg-success-subtle" id="text-${finalPartId}-${++numCreatedOptions}" value=""><button type="button" id="${idCloseButton}" class="admin close btn-close close-button" aria-label="Close"></button>`;
 
                     }
 
@@ -201,7 +202,7 @@ function createChapter() {
     newDiv.classList.add("section");
     newDiv.classList.add("w-100");
     newDiv.classList.add("shadow", "p-3", "mb-5", "bg-body-tertiary", "rounded", "gap-3");
-    newDiv.innerHTML=`<button type="button" id="close-${idNewDiv}" class="close btn-close close-button" aria-label="Close"></button><div id = 'content-${idNewDiv}' class = 'centrado w-75'><input id = 'header-chapter-${numChildren}' type='text' class = 'view section-${numChildren} p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100 text-center' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} btn btn-outline-warning ' onclick='createQuestion()'>Nueva pregunta</button>`;
+    newDiv.innerHTML=`<button type="button" id="close-${idNewDiv}" class="admin close btn-close close-button" aria-label="Close"></button><div id = 'content-${idNewDiv}' class = 'centrado w-75'><input id = 'header-chapter-${numChildren}' type='text' class = 'view section-${numChildren} p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100 text-center' value = 'Capítulo ${numChildren}'></div><button id = 'but-section-${numChildren}' class = ' but-question section-${numChildren} btn btn-outline-warning admin ' onclick='createQuestion()'>Nueva pregunta</button>`;
     divContent.appendChild(newDiv);
     let closeSectionButton = document.getElementById(`close-${idNewDiv}`);
     closeSectionButton.setAttribute("onclick", `removeElement("${idNewDiv}")`);
@@ -236,7 +237,7 @@ function changeTypeOption(idDiv, idSelector) {
         } else if(selectorChanged.value === optionsList[0] && tagNameOption === "TEXTAREA") {
             
             let idDivToChange =divContentQuestionElement.children.item(1).id;
-            divContentQuestionElement.children.item(1).innerHTML = `<input type="radio" id="${idFinalPart}-1-unique" class="option-marked p-2 form-check-input border border-primary" name="${idFinalPart}" value=""><input type="text" class="view border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${idFinalPart}-1" value=""><button type="button" id="close-${idFinalPart}-1" class="close btn-close close-button" aria-label="Close"></button>`;;
+            divContentQuestionElement.children.item(1).innerHTML = `<input type="radio" id="${idFinalPart}-1-unique" class="option-marked p-2 form-check-input border border-primary" name="${idFinalPart}" value=""><input type="text" class="view border border-0 border-bottom rounded w-50 p-2 bg-success-subtle" id="text-${idFinalPart}-1" value=""><button type="button" id="close-${idFinalPart}-1" class="admin close btn-close close-button" aria-label="Close"></button>`;;
             document.getElementById(`close-${idFinalPart}-1`).setAttribute("onclick", `removeElement("${idDivToChange}")`); 
 
 
@@ -244,7 +245,7 @@ function changeTypeOption(idDiv, idSelector) {
         } else if(selectorChanged.value === optionsList[1] && tagNameOption === "TEXTAREA") {
 
             let idDivToChange =divContentQuestionElement.children.item(1).id;
-            divContentQuestionElement.children.item(1).innerHTML = `<input type="checkbox" id="${idFinalPart}-1-several" class="option-marked p-2 form-check-input border border-primary" name="${idFinalPart}-1" value=""><input type="text" class="view border border-0 border-bottom rounded w-25 p-2 bg-success-subtle" id="text-${idFinalPart}-1" value=""><button type="button" id="close-${idFinalPart}-1" class="close btn-close close-button" aria-label="Close"></button>`;
+            divContentQuestionElement.children.item(1).innerHTML = `<input type="checkbox" id="${idFinalPart}-1-several" class="option-marked p-2 form-check-input border border-primary" name="${idFinalPart}-1" value=""><input type="text" class="view border border-0 border-bottom rounded w-50 p-2 bg-success-subtle" id="text-${idFinalPart}-1" value=""><button type="button" id="close-${idFinalPart}-1" class="admin close btn-close close-button" aria-label="Close"></button>`;
             document.getElementById(`close-${idFinalPart}-1`).setAttribute("onclick", `removeElement("${idDivToChange}")`); 
         }
         
@@ -325,12 +326,13 @@ function sendHTML() {
         jsonFormatEachElement = {"id_html" : `${element.id}`, "value_html" : `${element.value}`}
         contentSurveyList.push(jsonFormatEachElement);
     })
-    console.log("jsonArray" + JSON.stringify(contentSurveyList));
+    
     let htmlSurveyRow = document.body.innerHTML.split("<script")[0];
     let htmlSurveyWhiteSpace = htmlSurveyRow.replace(/\n/g, "");
     let htmlSurveyClean = htmlSurveyWhiteSpace.replace(/\s\s/g, "");
     let surveyJsonHtml = {
-        "html" : `${htmlSurveyClean}`
+        "html" : `${htmlSurveyClean}`,
+        "json" : `${JSON.stringify(contentSurveyList)}`
     }
 
     //Montar en la base de datos

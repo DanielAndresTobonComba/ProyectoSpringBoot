@@ -68,8 +68,8 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .requestMatchers(HttpMethod.POST, "/question").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/question").permitAll()
                 .requestMatchers("/catalog/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/users/verify").permitAll()
+                // .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
+                .requestMatchers( "/api/users/**").permitAll()
                 .requestMatchers("/responseOptions/**").permitAll()
 
                 .anyRequest().authenticated())
