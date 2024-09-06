@@ -45,6 +45,9 @@ function onLoadCreate() {
                     newDiv.classList.add("centrado", "container-survey","bg-body-tertiary", "rounded", "shadow", "p-3", "mb-5");
                     newDiv.innerHTML = `<div class="w-100 d-flex justify-content-center centrado-vertical gap-3"><button id='${idEliminateSurvey}' type="button" class="border border-0 bg-body-tertiary" ><img src="./static/eliminate.png" alt="" class="shadow-component rounded-circle"></button><button id='${idEditSurvey}' type="button" class="border border-0 bg-body-tertiary" ><img src="./static/edit.png" alt="" class="shadow-component rounded-circle"></button><button id='${idSeeSurvey}' type="button" class="border border-0 bg-body-tertiary" ><img src="./static/visibility.png" alt="" class="shadow-component rounded-circle"></button></div><p class="head fw-bold text-decoration-underline">${headSuervey}</p><p class="description text-start w-100">${descriptionSurvey}</p>`
                     divContent.appendChild(newDiv);
+
+                    document.getElementById(`${idSeeSurvey}`).setAttribute("onclick", `seeSurvey(${idSurvey})`);
+                    document.getElementById(`${idEliminateSurvey}`).setAttribute("onclick", `eliminateSurvey(${idSurvey})`);
     
                     
                 });
@@ -64,3 +67,48 @@ function backToLogin() {
 function createSurvey () {
     location.href = "http://localhost:8090/survey"
 }
+
+function seeSurvey(idSurvey) {
+
+    document.getElementById("saved-survey").style.display = "none";
+    document.getElementById("content-create-survey").style.display = "none";
+
+    
+
+    query = `http://localhost:8090/api/surveyjson/${idSurvey}`
+    
+    fetch (query, {
+        method: 'GET',
+        mode: "cors",
+        headers: {
+        'Content-type' : 'application/json; charset=UTF-8',
+        'Access-Control-Allow-Origin': '*',
+        },
+        })
+        .then(response => response.json())
+        .then(json => {
+            
+            let htmlText = json.html;
+            let jsonHtml =JSON.parse(json.json);
+            let divContent = document.getElementById("board");
+
+            divContent.innerHTML = htmlText;
+
+            for (let i=0; i<=jsonHtml.length - 1; i++) {
+
+                let idHtml = JSON.parse(json.json)[i].id_html;
+                let textContent = JSON.parse(json.json)[i].value_html;
+
+                document.getElementById(idHtml).value = textContent;
+
+            }
+            
+
+            // console.log(json.json.split("[")[1].split("]")[0]);
+    
+        })
+    
+}
+
+
+
