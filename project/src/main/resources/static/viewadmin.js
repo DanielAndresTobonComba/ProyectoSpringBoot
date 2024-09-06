@@ -74,8 +74,9 @@ function closeView() {
 
     
     document.getElementById("saved-survey").style.visibility = "visible";
-    document.getElementById("content-create-survey").style.visibility = "visible";
-    document.getElementById("board").style.visibility = "collapse";
+    document.getElementById("content-create-survey").style.display = "flex";
+    document.getElementById("content-create-survey").style.justifyContent = "center";
+    document.getElementById("board").style.display = "none";
     document.getElementById("div-close-view-button").style.visibility = "collapse";
 
 }
@@ -83,9 +84,9 @@ function closeView() {
 function seeSurvey(idSurvey) {
 
     document.getElementById("saved-survey").style.visibility = "collapse";
-    document.getElementById("content-create-survey").style.visibility = "collapse";
+    document.getElementById("content-create-survey").style.display = "none";
     document.getElementById("div-close-view-button").style.visibility = "visible";
-    document.getElementById("board").style.visibility = "visible";
+    document.getElementById("board").style.display = "flex";
     
 
     
