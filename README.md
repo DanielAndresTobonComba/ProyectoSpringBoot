@@ -1,6 +1,6 @@
 # ProyectoSpringBoot
 
-##Integrantes 
+## Integrantes 
 
--- Carlos Jhoan Aguilar
--- Daniel Andrés Tobón Comba
+#### Carlos Jhoan Aguilar
+#### Daniel Andrés Tobón Comba
