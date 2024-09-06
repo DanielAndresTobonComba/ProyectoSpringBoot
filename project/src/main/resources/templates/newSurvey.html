@@ -64,6 +64,7 @@
 
         .close {
             transition: box-shadow 0.3s;
+            cursor: pointer;
         }
 
         .close:hover {
@@ -90,52 +91,61 @@
 
             transition: box-shadow 0.3s;
         }
+
+        #logout {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+
+        
     </style>
 </head>
 
 <body class="p-5">
+    <div id="logout" class="w-100 d-flex justify-content-end p-2">
+        <img src="../static/logout.png" alt="" id="img-logout" class="close rounded pointer-cursor img-view">
+    </div>
     <div id="surveyInfo" class="mb-3 w-50 text-center">
         <label for="exampleFormControlInput1" class="form-label">Nombre de la encuesta</label>
-        <input type="email" class="form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded" id="head"
+        <input type="text" class="view form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded text-center fs-3 text" id="head"
             placeholder="Título de la encuesta">
     </div>
 
     <div class="mb-3 w-50 text-center">
         <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-        <textarea class="form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded" id="description" rows="3"></textarea>
+        <textarea class="view form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded" id="description" rows="3"></textarea>
     </div>
 
 
+    <div class="admin centrado w-100">
+        <label for="categories">Seleccionar categoria</label>
+        <select id="categories" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded"
+            aria-label="Default select example">
 
-    <label for="categories">categoria</label>
-    <select id="categories" class="form-select w-25 shadow p-3 mb-5 bg-body-tertiary rounded"
-        aria-label="Default select example">
+        </select>
+    </div>
 
-    </select>
+    <div class="centrado w-100">
+        <label for="text_category">Categoría</label>
+        <input id = 'text-category' type='text' class = 'view p-3 mb-2 text-success-emphasis border border-0 rounded fw-bold w-50 text-center shadow p-3 mb-5 bg-body-tertiary rounded' value = '' readonly>
+    </div>
+
+
 
     <div id="content" class="content centrado p-2">
-        <div id="section-1" class="centrado p-3 section w-100 shadow p-3 mb-5 bg-body-tertiary rounded">
-            <div id="content-section-1" class="centrado w-75">
-                <input id="header-chapter-1" type="text"
-                    class="section-1 p-3 mb-2 bg-body-secondary text-success-emphasis border border-bottom-0 rounded fw-bold w-100"
-                    value="Capítulo 1">
-            </div>
-
-            <button id="but-section-1" class=" but-question section-1 btn btn-outline-warning "
-                onclick="createQuestion()">Nueva pregunta</button>
-
-        </div>
+        
 
 
     </div>
 
-    <div id="new-buttons">
+    <div id="new-buttons" class="admin">
         <button onclick="createChapter()" class="btn btn-primary btn-lg">Nuevo cap</button>
 
     </div>
 
 
-    <button id="regist-button" class="btn btn-outline-success">Registrar Encuesta</button>
+    <button id="regist-button" class="admin btn btn-outline-success">Registrar Encuesta</button>
 
 
 
@@ -147,41 +157,7 @@
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
 
-    <script>
-        alert("entre a mis funciones")
-
-        function fetchSurveyById(id) {
-    const url = `http://localhost:8090/survey/findOne/${id}`;
-
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-        .then(response => {
-            if (!response.ok) {
-                return response.text().then(text => {
-                    throw new Error(`HTTP error! Status: ${response.status}, Message: ${text}`);
-                });
-            }
-            return response.text();  // Cambiado a `response.text()` para manejar respuestas de texto
-        })
-        .then(data => {
-            console.log("Datos recibidos:", data);  // Aquí puedes manejar el string recibido
-            const obj = JSON.parse(data);
-            console.log(obj);
-        })
-        .catch(error => {
-            console.error("Error al buscar los datos:", error);
-            console.log("Error al buscar los datos.");  // Notifica al usuario en caso de error
-        });
-}
-
-// Ejemplo de uso:
-fetchSurveyById(1);
-
-    </script>
+    
 </body>
 
 </html>

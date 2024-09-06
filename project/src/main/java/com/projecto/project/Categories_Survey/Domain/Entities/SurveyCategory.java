@@ -28,14 +28,14 @@ public class SurveyCategory {
     @Column(columnDefinition = "varchar(255)")
     private String name;
 
-    @Column(columnDefinition = "text" , nullable = true)
-    private String reference_html;
+    // @Column(columnDefinition = "text" , nullable = true)
+    // private String reference_html;
     
     @Embedded 
     private CreatedUpdatedTime createdUpdatedTime;
 
-    @OneToMany(mappedBy = "survey_category", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Survey> survey;
+    // @OneToMany(mappedBy = "survey_category", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    // private List<Survey> survey;
 
     public Long getId() {
         return id;

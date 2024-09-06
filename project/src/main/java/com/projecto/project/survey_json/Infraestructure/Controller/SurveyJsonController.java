@@ -1,5 +1,6 @@
 package com.projecto.project.survey_json.Infraestructure.Controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +27,24 @@ public class SurveyJsonController {
     ISurvey_json iSurvey_json; 
 
     @GetMapping("{id}")
-    
-    public String findById(@PathVariable long id) {
+    public Optional<SurveyJson> findById(@PathVariable long id) {
 
         Optional<SurveyJson> surveyJson = iSurvey_json.findById(id);
 
-        if (surveyJson.isPresent()) {
-            SurveyJson surveyHTML = surveyJson.get();
-            return surveyHTML.getJson();
-        }
+        // if (surveyJson.isPresent()) {
+        //     return surveyJson;
+        // }
 
-        return ResponseEntity.notFound().toString();
+        // return ResponseEntity.notFound();
+
+          return surveyJson;
+    }
+
+    @GetMapping("/allSurveys")
+    public List<SurveyJson> extractAll() {
+
+        return iSurvey_json.findAll();
+
     }
 
     @PostMapping

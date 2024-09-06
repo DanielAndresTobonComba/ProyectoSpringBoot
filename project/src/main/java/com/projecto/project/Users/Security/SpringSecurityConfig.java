@@ -26,6 +26,8 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("logIn");
         registry.addViewController("/index").setViewName("logIn");
         registry.addViewController("/survey").setViewName("newSurvey");
+        registry.addViewController("/admin").setViewName("viewAdmin");
+        registry.addViewController("/user").setViewName("viewUser");
     }
 
     @Override
@@ -51,8 +53,11 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
         return http.authorizeHttpRequests((authz) -> authz
                 .requestMatchers("/api/categories/**").permitAll()
                 .requestMatchers("/index").permitAll()
-                .requestMatchers("/api/surveyjson", "api/surveyjson/**").permitAll()
+                .requestMatchers("/api/surveyjson").permitAll()
+                .requestMatchers("/api/surveyjson/**").permitAll()
                 .requestMatchers("/survey").permitAll()
+                .requestMatchers("/admin").permitAll()
+                .requestMatchers("/user").permitAll()
                 .requestMatchers("/static/**").permitAll()
                 .requestMatchers("/api/categories").permitAll()
                 .requestMatchers("/api/users").permitAll()
@@ -67,8 +72,8 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .requestMatchers(HttpMethod.POST, "/question").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/question").permitAll()
                 .requestMatchers("/catalog/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/users/verify").permitAll()
+                // .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
+                .requestMatchers( "/api/users/**").permitAll()
                 .requestMatchers("/responseOptions/**").permitAll()
 
                 .anyRequest().authenticated())
