@@ -27,6 +27,7 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
         registry.addViewController("/index").setViewName("logIn");
         registry.addViewController("/survey").setViewName("newSurvey");
         registry.addViewController("/admin").setViewName("viewAdmin");
+        registry.addViewController("/user").setViewName("viewUser");
     }
 
     @Override
@@ -56,6 +57,7 @@ public class SpringSecurityConfig implements WebMvcConfigurer {
                 .requestMatchers("/api/surveyjson/**").permitAll()
                 .requestMatchers("/survey").permitAll()
                 .requestMatchers("/admin").permitAll()
+                .requestMatchers("/user").permitAll()
                 .requestMatchers("/static/**").permitAll()
                 .requestMatchers("/api/categories").permitAll()
                 .requestMatchers("/api/users").permitAll()
