@@ -3,6 +3,8 @@ document.body.setAttribute("onload", "onLoadCreate()");
 document.getElementById("logout").setAttribute("onclick", "backToLogin()");
 document.getElementById("img-create-survey").setAttribute("onclick", "createSurvey()");
 
+document.getElementById("close-view-button").setAttribute("onclick", "closeView()");
+
 
 
 function onLoadCreate() {
@@ -68,10 +70,22 @@ function createSurvey () {
     location.href = "http://localhost:8090/survey"
 }
 
+function closeView() {
+
+    
+    document.getElementById("saved-survey").style.display = "block";
+    document.getElementById("content-create-survey").style.display = "block";
+    document.getElementById("board").style.display = "none";
+    document.getElementById("close-view-button").style.display = "none";
+
+}
+
 function seeSurvey(idSurvey) {
 
     document.getElementById("saved-survey").style.display = "none";
     document.getElementById("content-create-survey").style.display = "none";
+    document.getElementById("div-close-view-button").style.display = "block";
+    
 
     
 

@@ -93,6 +93,16 @@
             transition: box-shadow 0.3s;
         }
 
+        #logout {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+
+        #div-close-view-button {
+            display:none;
+        }
+
 
     </style>
 
@@ -112,7 +122,11 @@
 
 
 
-    <div id="saved-survey" class="to-hide "></div>
+    <div id="saved-survey" class="to-hide gap-3"></div>
+
+    <div id="div-close-view-button" class="">
+        <button type="button" id="close-view-button" class="close btn-close close-button" aria-label="Close"></button>
+    </div>
 
     <div id="board" class="w-100 centrado"></div>
 
