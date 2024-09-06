@@ -50,6 +50,7 @@ function onLoadCreate() {
 
                     document.getElementById(`${idSeeSurvey}`).setAttribute("onclick", `seeSurvey(${idSurvey})`);
                     document.getElementById(`${idEliminateSurvey}`).setAttribute("onclick", `eliminateSurvey(${idSurvey})`);
+                    document.getElementById(`${idEditSurvey}`).setAttribute("onclick", `editSurvey(${idSurvey})`);
     
                     
                 });
@@ -124,6 +125,49 @@ function seeSurvey(idSurvey) {
     
         })
     
+}
+
+function editSurvey(idSurvey) {
+
+    document.getElementById("saved-survey").style.visibility = "collapse";
+    document.getElementById("content-create-survey").style.display = "none";
+    document.getElementById("div-close-view-button").style.visibility = "visible";
+    document.getElementById("board").style.display = "flex";
+
+    query = `http://localhost:8090/api/surveyjson/${idSurvey}`
+    
+    fetch (query, {
+        method: 'GET',
+        mode: "cors",
+        headers: {
+        'Content-type' : 'application/json; charset=UTF-8',
+        'Access-Control-Allow-Origin': '*',
+        },
+        })
+        .then(response => response.json())
+        .then(json => {
+            
+            let htmlText = json.html;
+            let jsonHtml =JSON.parse(json.json);
+            let divContent = document.getElementById("board");
+
+            divContent.innerHTML = htmlText;
+
+            for (let i=0; i<=jsonHtml.length - 1; i++) {
+
+                let idHtml = JSON.parse(json.json)[i].id_html;
+                let textContent = JSON.parse(json.json)[i].value_html;
+
+                document.getElementById(idHtml).value = textContent;
+
+            }
+            
+            let admin = document.querySelectorAll(".admin");
+
+            // console.log(json.json.split("[")[1].split("]")[0]);
+    
+        })
+
 }
 
 
