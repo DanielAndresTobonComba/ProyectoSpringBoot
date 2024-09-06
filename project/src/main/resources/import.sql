@@ -1,7 +1,7 @@
 -- Insertar categorías de encuesta
 INSERT INTO survey_category (name, reference_html)
-VALUES 
-('Deporte', '<p>Deporte category reference HTML</p>'),
+VALUES s
+('Deportes', '<p>Deporte category reference HTML</p>'),
 ('Contabilidad', '<p>Contabilidad category reference HTML</p>');
 
 -- Insertar las encuestas
