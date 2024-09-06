@@ -73,18 +73,19 @@ function createSurvey () {
 function closeView() {
 
     
-    document.getElementById("saved-survey").style.display = "block";
-    document.getElementById("content-create-survey").style.display = "block";
-    document.getElementById("board").style.display = "none";
-    document.getElementById("close-view-button").style.display = "none";
+    document.getElementById("saved-survey").style.visibility = "visible";
+    document.getElementById("content-create-survey").style.visibility = "visible";
+    document.getElementById("board").style.visibility = "collapse";
+    document.getElementById("div-close-view-button").style.visibility = "collapse";
 
 }
 
 function seeSurvey(idSurvey) {
 
-    document.getElementById("saved-survey").style.display = "none";
-    document.getElementById("content-create-survey").style.display = "none";
-    document.getElementById("div-close-view-button").style.display = "block";
+    document.getElementById("saved-survey").style.visibility = "collapse";
+    document.getElementById("content-create-survey").style.visibility = "collapse";
+    document.getElementById("div-close-view-button").style.visibility = "visible";
+    document.getElementById("board").style.visibility = "visible";
     
 
     
