@@ -64,6 +64,7 @@
 
         .close {
             transition: box-shadow 0.3s;
+            cursor: pointer;
         }
 
         .close:hover {
@@ -91,11 +92,20 @@
             transition: box-shadow 0.3s;
         }
 
+        #logout {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+
         
     </style>
 </head>
 
 <body class="p-5">
+    <div id="logout" class="w-100 d-flex justify-content-end p-2">
+        <img src="../static/logout.png" alt="" id="img-logout" class="close rounded pointer-cursor img-view">
+    </div>
     <div id="surveyInfo" class="mb-3 w-50 text-center">
         <label for="exampleFormControlInput1" class="form-label">Nombre de la encuesta</label>
         <input type="text" class="view form-control shadow-sm p-3 mb-5 bg-body-tertiary rounded text-center fs-3 text" id="head"

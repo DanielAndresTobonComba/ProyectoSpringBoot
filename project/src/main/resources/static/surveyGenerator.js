@@ -4,6 +4,7 @@ let optionsList = ["Única Respuesta", "Respuesta Múltiple", "Respuesta Abierta
 
 document.body.setAttribute("onload", "onLoadCreate()");
 document.getElementById("categories").setAttribute("onchange", "putCategory()");
+document.getElementById("logout").setAttribute("onclick", "backToLogin()");
 
 function putCategory() {
     let inputTextcategory = document.getElementById("text-category");
@@ -315,6 +316,10 @@ function removeElement(idElementToEliminate) {
     let divToRemove = document.getElementById(idElementToEliminate);
     divToRemove.remove(); 
 
+}
+
+function backToLogin() {
+    location.href = "http://localhost:8090/index"
 }
 
 

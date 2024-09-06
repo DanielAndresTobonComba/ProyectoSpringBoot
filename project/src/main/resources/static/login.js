@@ -77,7 +77,7 @@ function authenticateUser() {
         passwordInput.value = "";
 
     } else if (verifiedMessage=== "Admin") {
-        location.href = "http://localhost:8090/survey";
+        location.href = "http://localhost:8090/admin";
 
     } else if (verifiedMessage=== "User") {
         location.href = "http://localhost:8090/survey";
