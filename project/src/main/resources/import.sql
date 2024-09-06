@@ -1,8 +1,8 @@
 -- Insertar categorías de encuesta
-INSERT INTO survey_category (name, reference_html)
-VALUES s
-('Deportes', '<p>Deporte category reference HTML</p>'),
-('Contabilidad', '<p>Contabilidad category reference HTML</p>');
+INSERT INTO survey_category (name)
+VALUES 
+('Deportes'),
+('Contabilidad');
 
 -- Insertar las encuestas
 INSERT INTO surveys (reference_html, name, description, survey_category)
@@ -51,3 +51,13 @@ SELECT * FROM surveys;
 SELECT * FROM chapter;
 SELECT * FROM question;
 SELECT * FROM response_options;
+/* 
+    SELECT *
+FROM response_options ro
+JOIN question q ON ro.question_id = q.id
+JOIN chapter ch ON q.chapter_id = ch.id
+JOIN surveys s ON ch.survey_id = s.id
+WHERE s.id = 28; 
+
+delete from surveys where id = 1;
+ */
