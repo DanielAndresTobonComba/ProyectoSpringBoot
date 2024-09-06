@@ -1,5 +1,6 @@
 package com.projecto.project.survey_json.Application;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,9 @@ public class SurveyJsonServiceImpl implements ISurvey_json {
     }
 
     @Override
-    public Page<SurveyJson> findAll(Pageable pageable) {
+    public List<SurveyJson> findAll() {
 
-        return surveyJsonRepository.findAll(pageable);
+        return surveyJsonRepository.findAll();
     
     }
 

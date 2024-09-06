@@ -27,7 +27,6 @@ public class SurveyJsonController {
     ISurvey_json iSurvey_json; 
 
     @GetMapping("{id}")
-    
     public Optional<SurveyJson> findById(@PathVariable long id) {
 
         Optional<SurveyJson> surveyJson = iSurvey_json.findById(id);
@@ -39,6 +38,13 @@ public class SurveyJsonController {
         // return ResponseEntity.notFound();
 
           return surveyJson;
+    }
+
+    @GetMapping("/allSurveys")
+    public List<SurveyJson> extractAll() {
+
+        return iSurvey_json.findAll();
+
     }
 
     @PostMapping
