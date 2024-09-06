@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.projecto.project.Categories_Survey.Domain.Entities.SurveyCategory;
 import com.projecto.project.Response_Options.Domain.ResponseOptions;
 import com.projecto.project.Survey.Domain.Entities.Survey;
 import com.projecto.project.Survey.Domain.Service.ISurvey;
@@ -72,7 +73,20 @@ public class SurveyServiceImpl implements ISurvey {
 
     @Override
     public Survey createOne(Survey survey) {
-        return surveyRepository.save(survey);
+
+        Survey surveyData = surveyRepository.save(survey);
+
+        SurveyCategory surveyCategory = new SurveyCategory(); 
+        
+        surveyCategory = surveyData.getSurvey_category();
+
+        surveyCategory.setName("hola");
+
+        surveyData.setSurvey_category(surveyCategory);
+
+        return surveyData;
+
+
     }
 
 /*     @Override

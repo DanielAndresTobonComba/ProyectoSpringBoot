@@ -4,15 +4,10 @@ import java.util.Optional;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projecto.project.Chapter.Domain.Chapter;
 import com.projecto.project.Questions.Domain.IQuestions;
 import com.projecto.project.Questions.Domain.Question;
-import com.projecto.project.Survey.Domain.Entities.Survey;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
