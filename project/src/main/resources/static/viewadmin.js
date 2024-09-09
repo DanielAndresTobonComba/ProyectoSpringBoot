@@ -79,6 +79,40 @@ function createSurvey () {
     location.href = "http://localhost:8090/survey"
 }
 
+function eliminateSurvey(idSurvey) {
+
+    document.getElementById(`survey-${idSurvey}`).remove();
+
+    const queryGet = `http://localhost:8090/api/surveyjson/${idSurvey}`
+    const queryPost = `http://localhost:8090/api/surveyjson/deleteSurvey`
+
+
+    fetch (queryGet, {
+        method: 'GET',
+        mode: "cors",
+        headers: {
+        'Content-type' : 'application/json; charset=UTF-8',
+        'Access-Control-Allow-Origin': '*',
+        },
+        })
+        .then(response => response.json())
+        .then(json => {
+            fetch (queryPost, {
+                method: 'POST',
+                body: JSON.stringify(json),
+                headers: {
+                'Content-type' : 'application/json; charset=UTF-8'
+                },
+                })
+    
+        })
+
+        alert(`Se ha eliminado la encuesta con código ${idSurvey} exitosamente!`);
+
+    
+    }
+
+
 
 function seeSurvey(idSurvey) {
 

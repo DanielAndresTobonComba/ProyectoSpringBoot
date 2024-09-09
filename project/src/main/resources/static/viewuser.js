@@ -71,16 +71,6 @@ function backToViewUser() {
     location.href = "http://localhost:8090/user"
 }
 
-function closeView() {
-
-    
-    // document.getElementById("saved-survey").style.display = "flex";
-    // document.getElementById("saved-survey").style.flexWrap = "wrap";
-    // document.getElementById("board").style.display = "none";
-    // document.getElementById("div-close-view-button").style.visibility = "collapse";
-    // document.getElementById("back").style.visibility = "hidden";
-
-}
 
 function seeSurvey(idSurvey) {
 

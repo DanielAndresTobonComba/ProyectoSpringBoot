@@ -37,6 +37,15 @@ public class SurveyJsonServiceImpl implements ISurvey_json {
     
     }
 
+    @Override
+    public void deleteSurvey(Long id) {
+        
+        surveyJsonRepository.deleteById(id);
+        
+    }
+
+    
+
     
 
 }
