@@ -2,6 +2,8 @@
 document.body.setAttribute("onload", "onLoadCreate()");
 document.getElementById("logout").setAttribute("onclick", "backToLogin()");
 
+document.getElementById("back").setAttribute("onclick", "backToViewUser()");
+
 document.getElementById("close-view-button").setAttribute("onclick", "closeView()");
 
 
@@ -37,7 +39,6 @@ function onLoadCreate() {
                     let idSurvey = element.id;
                     let headSuervey = JSON.parse(element.json)[0].value_html;
                     let descriptionSurvey = JSON.parse(element.json)[1].value_html;
-                    let idEliminateSurvey = "close-" + idSurvey;
                     let idSeeSurvey = "see-" + idSurvey; 
                     let newDiv = document.createElement("div");
                     let idNewDiv = "survey-" + idSurvey;
@@ -47,6 +48,9 @@ function onLoadCreate() {
                     divContent.appendChild(newDiv);
 
                     document.getElementById(`${idSeeSurvey}`).setAttribute("onclick", `seeSurvey(${idSurvey})`);
+                    document.getElementById("saved-survey").style.display = "flex";
+                    document.getElementById("saved-survey").style.flexWrap = "wrap"; 
+                    document.getElementById("back").style.visibility = "hidden";
     
                     
                 });
@@ -63,20 +67,27 @@ function backToLogin() {
     location.href = "http://localhost:8090/index"
 }
 
+function backToViewUser() {
+    location.href = "http://localhost:8090/user"
+}
+
 function closeView() {
 
     
-    document.getElementById("saved-survey").style.visibility = "visible";
-    document.getElementById("board").style.visibility = "hidden";
-    document.getElementById("div-close-view-button").style.visibility = "collapse";
+    // document.getElementById("saved-survey").style.display = "flex";
+    // document.getElementById("saved-survey").style.flexWrap = "wrap";
+    // document.getElementById("board").style.display = "none";
+    // document.getElementById("div-close-view-button").style.visibility = "collapse";
+    // document.getElementById("back").style.visibility = "hidden";
 
 }
 
 function seeSurvey(idSurvey) {
 
-    document.getElementById("saved-survey").style.visibility = "collapse";
-    document.getElementById("div-close-view-button").style.visibility = "visible";
-    //document.getElementById("board").style.display = "flex";
+    document.getElementById("saved-survey").style.display = "none";
+    // document.getElementById("div-close-view-button").style.visibility = "visible";
+    document.getElementById("board").style.display = "flex";
+    document.getElementById("back").style.visibility = "visible";
     
 
     
@@ -108,9 +119,6 @@ function seeSurvey(idSurvey) {
                 document.getElementById(idHtml).value = textContent;
 
             }
-            
-
-            // console.log(json.json.split("[")[1].split("]")[0]);
     
         })
     

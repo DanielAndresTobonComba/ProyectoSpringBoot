@@ -3,8 +3,7 @@ let jsonList;
 let optionsList = ["Única Respuesta", "Respuesta Múltiple", "Respuesta Abierta"];
 
 document.body.setAttribute("onload", "onLoadCreate()");
-document.getElementById("categories").setAttribute("onchange", "putCategory()");
-document.getElementById("logout").setAttribute("onclick", "backToLogin()");
+
 
 function putCategory() {
     let inputTextcategory = document.getElementById("text-category");
@@ -17,8 +16,10 @@ function onLoadCreate() {
     // Asignar función registrar HTML en la tabla survey_json
     let sendHTMLButton = document.getElementById("regist-button");
     sendHTMLButton.setAttribute("onclick", "sendHTML()");
+    document.getElementById("categories").setAttribute("onchange", "putCategory()");
+    document.getElementById("logout").setAttribute("onclick", "backToLogin()");
+    document.getElementById("back").setAttribute("onclick", "backToViewAdmin()");
     
-
     
     query = "http://localhost:8090/api/categories/getCategories"
     
@@ -45,7 +46,9 @@ function onLoadCreate() {
     
 }
 
-
+function backToViewAdmin() {
+    location.href = "http://localhost:8090/admin"
+}
 
 function createQuestion() {
     let  count = 1;

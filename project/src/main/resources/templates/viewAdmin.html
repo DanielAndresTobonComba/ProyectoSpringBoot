@@ -123,20 +123,33 @@
             
         }
 
+        #back {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            /*invert: (-1)*/
+        }
+
+        
+
 
     </style>
 
 </head>
-<body class="p-5 centrado bg-body-secondary bg-gradient">
+<body class="p-3 centrado bg-body-secondary bg-gradient">
 
     <div id="logout" class=" d-flex justify-content-end p-2">
         <img src="../static/logout.png" alt="" id="img-logout" class="option-marked pointer-cursor img-view rounded-circle">
     </div>
 
+    <div id="back" class="d-flex justify-content-end p-2">
+        <img src="../static/back.png" alt="" id="img-back" class="option-marked pointer-cursor img-view rounded-circle">
+    </div>
+
     <div id="board" class="w-100 centrado">
-        <div id="div-close-view-button" class="p-2">
+        <!--<div id="div-close-view-button" class="p-2">
             <button type="button" id="close-view-button" class="shadow-component close btn-close close-button" aria-label="Close"></button>
-        </div>
+        </div>-->
         <div id="painter" class="w-100 centrado"></div>
     </div>
 
@@ -150,9 +163,6 @@
 
     <div id="saved-survey" class="gap-3"></div>
 
-    
-
-    
 
     <script type="text/javascript" src = "../static/viewadmin.js">  </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
