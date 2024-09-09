@@ -53,6 +53,7 @@ function onLoadCreate() {
                     document.getElementById(`${idEditSurvey}`).setAttribute("onclick", `editSurvey(${idSurvey})`);
                     document.getElementById("saved-survey").style.display = "flex";
                     document.getElementById("saved-survey").style.flexWrap = "wrap"; 
+                    document.getElementById("saved-survey").style.justifyContent = "center"; 
                     document.getElementById("back").style.visibility = "hidden";
                     
                 });
