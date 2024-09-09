@@ -43,7 +43,7 @@ function onLoadCreate() {
                     let idNewDiv = "survey-" + idSurvey;
                     newDiv.id=idNewDiv;
                     newDiv.classList.add("centrado", "container-survey","bg-body-tertiary", "rounded", "shadow", "p-3", "mb-5");
-                    newDiv.innerHTML = `<div class="w-100 d-flex justify-content-center centrado-vertical gap-3"><button id='${idSeeSurvey}' type="button" class="border border-0 bg-body-tertiary" ><img src="./static/visibility.png" alt="" class="shadow-component rounded-circle"></button></div><p class="head fw-bold text-decoration-underline">${headSuervey}</p><p class="description text-start w-100">${descriptionSurvey}</p>`
+                    newDiv.innerHTML = `<div class="w-100 d-flex justify-content-center centrado-vertical gap-3"><button id='${idSeeSurvey}' type="button" class="border border-0 bg-body-tertiary" ><img src="./static/visibility.png" alt="" class="shadow-component rounded-circle"></button></div><p class="head fw-bold text-decoration-underline text-break text-center">${headSuervey}</p><p class="description text-start w-100 text-break">${descriptionSurvey}</p>`
                     divContent.appendChild(newDiv);
 
                     document.getElementById(`${idSeeSurvey}`).setAttribute("onclick", `seeSurvey(${idSurvey})`);
