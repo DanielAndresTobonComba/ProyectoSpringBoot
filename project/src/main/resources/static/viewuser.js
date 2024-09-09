@@ -67,7 +67,7 @@ function closeView() {
 
     
     document.getElementById("saved-survey").style.visibility = "visible";
-    document.getElementById("board").style.display = "none";
+    document.getElementById("board").style.visibility = "hidden";
     document.getElementById("div-close-view-button").style.visibility = "collapse";
 
 }
@@ -76,7 +76,7 @@ function seeSurvey(idSurvey) {
 
     document.getElementById("saved-survey").style.visibility = "collapse";
     document.getElementById("div-close-view-button").style.visibility = "visible";
-    document.getElementById("board").style.display = "flex";
+    //document.getElementById("board").style.display = "flex";
     
 
     
@@ -96,7 +96,7 @@ function seeSurvey(idSurvey) {
             
             let htmlText = json.html;
             let jsonHtml =JSON.parse(json.json);
-            let divContent = document.getElementById("board");
+            let divContent = document.getElementById("painter");
 
             divContent.innerHTML = htmlText;
 

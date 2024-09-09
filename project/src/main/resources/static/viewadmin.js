@@ -51,7 +51,8 @@ function onLoadCreate() {
                     document.getElementById(`${idSeeSurvey}`).setAttribute("onclick", `seeSurvey(${idSurvey})`);
                     document.getElementById(`${idEliminateSurvey}`).setAttribute("onclick", `eliminateSurvey(${idSurvey})`);
                     document.getElementById(`${idEditSurvey}`).setAttribute("onclick", `editSurvey(${idSurvey})`);
-    
+                    document.getElementById("saved-survey").style.display = "flex";
+                    document.getElementById("saved-survey").style.flexWrap = "wrap"; 
                     
                 });
 
@@ -74,7 +75,8 @@ function createSurvey () {
 function closeView() {
 
     
-    document.getElementById("saved-survey").style.visibility = "visible";
+    document.getElementById("saved-survey").style.display = "flex";
+    document.getElementById("saved-survey").style.flexWrap = "wrap";
     document.getElementById("content-create-survey").style.display = "flex";
     document.getElementById("content-create-survey").style.justifyContent = "center";
     document.getElementById("board").style.display = "none";
@@ -84,7 +86,7 @@ function closeView() {
 
 function seeSurvey(idSurvey) {
 
-    document.getElementById("saved-survey").style.visibility = "collapse";
+    document.getElementById("saved-survey").style.display = "none";
     document.getElementById("content-create-survey").style.display = "none";
     document.getElementById("div-close-view-button").style.visibility = "visible";
     document.getElementById("board").style.display = "flex";
@@ -107,7 +109,7 @@ function seeSurvey(idSurvey) {
             
             let htmlText = json.html;
             let jsonHtml =JSON.parse(json.json);
-            let divContent = document.getElementById("board");
+            let divContent = document.getElementById("painter");
 
             divContent.innerHTML = htmlText;
 
