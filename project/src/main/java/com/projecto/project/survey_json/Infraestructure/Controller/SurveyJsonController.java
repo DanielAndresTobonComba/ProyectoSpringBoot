@@ -31,12 +31,6 @@ public class SurveyJsonController {
 
         Optional<SurveyJson> surveyJson = iSurvey_json.findById(id);
 
-        // if (surveyJson.isPresent()) {
-        //     return surveyJson;
-        // }
-
-        // return ResponseEntity.notFound();
-
           return surveyJson;
     }
 
@@ -51,6 +45,14 @@ public class SurveyJsonController {
     public SurveyJson postMethodName(@RequestBody SurveyJson surveyJson) {
         
         return iSurvey_json.createSurvey(surveyJson);
+    }
+
+    @PostMapping ("/deleteSurvey")
+    public String deleteSurvey(@RequestBody SurveyJson surveyJson) {
+        
+        iSurvey_json.deleteSurvey(surveyJson.getId());
+
+        return null;
     }
     
 

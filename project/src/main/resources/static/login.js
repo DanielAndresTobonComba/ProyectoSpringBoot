@@ -124,10 +124,14 @@ function registerUser() {
                 if (registeredMessage === "true") {
 
                     alert("Registro Exitoso. Puedes ingresar!!");
+                    usernameInput.value = "";
+                    passwordInput.value = "";
 
                 } else {
 
                     alert("Ya hay un registro con este nombre de usuario!!");
+                    usernameInput.value = "";
+                    passwordInput.value = "";
 
                 }
     

@@ -13,4 +13,6 @@ public interface ISurvey_json {
 
     SurveyJson createSurvey(SurveyJson surveyJson);
 
+    void deleteSurvey(Long id);
+
 }
