@@ -84,31 +84,33 @@ function eliminateSurvey(idSurvey) {
 
     document.getElementById(`survey-${idSurvey}`).remove();
 
-    const queryGet = `http://localhost:8090/api/surveyjson/${idSurvey}`
-    const queryPost = `http://localhost:8090/api/surveyjson/deleteSurvey`
+    //const queryGet = `http://localhost:8090/api/surveyjson/${idSurvey}`
+    const queryPost = `http://localhost:8090/api/surveyjson/deleteSurvey/${idSurvey}`
 
 
-    fetch (queryGet, {
-        method: 'GET',
-        mode: "cors",
+    fetch (queryPost, {
+        method: 'DELETE',
+        //mode: "cors",
         headers: {
         'Content-type' : 'application/json; charset=UTF-8',
         'Access-Control-Allow-Origin': '*',
         },
         })
-        .then(response => response.json())
+        .then(response => response.text())
         .then(json => {
-            fetch (queryPost, {
-                method: 'POST',
-                body: JSON.stringify(json),
-                headers: {
-                'Content-type' : 'application/json; charset=UTF-8'
-                },
-                })
+            
+            if (json == "Encuesta borrada") {
+
+                alert(`Se ha eliminado la encuesta con código ${idSurvey} exitosamente!`);
+
+            } else if (json == "Encuesta no registrada")  {
+                alert(`No existe una encuesta registrada con id ${idSurvey}.` )
+            }
+            
     
         })
 
-        alert(`Se ha eliminado la encuesta con código ${idSurvey} exitosamente!`);
+        
 
     
     }
